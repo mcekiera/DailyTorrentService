@@ -1,10 +1,21 @@
 package pl.mcekiera.model;
 
-import java.util.Date;
+/**
+ * Represents raw torrent movie data fetched from XML file (RSS source), without a movie details.
+ */
 
 public class RawXmlMovieData {
+    /**
+     * Torrent file title, containing movie title.
+     */
     private final String title;
+    /**
+     * Link to torrent file.
+     */
     private final String link;
+    /**
+     * Date of torrent file publication in String form.
+     */
     private final String publicationDate;
 
     public RawXmlMovieData(String title, String link, String date) {
@@ -21,7 +32,7 @@ public class RawXmlMovieData {
         return link;
     }
 
-    public Date getPublicationDate() {
+    public String getPublicationDate() {
         return publicationDate;
     }
 
