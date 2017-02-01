@@ -46,7 +46,7 @@ public class XmlMovieDataProcessor {
      * @return RawXmlMovieData objects list with data retrieved from RSS source.
      */
     public List<RawXmlMovieData> getRawXmlMovieData() {
-        return null;
+        return data;
     }
 
     /**
