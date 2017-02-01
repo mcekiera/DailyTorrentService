@@ -15,7 +15,21 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>acme-nexus-releases</id>
+            <name>acme nexus</name>
+            <url>https://nexus.acme.net/content/repositories/releases</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -23,8 +37,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>

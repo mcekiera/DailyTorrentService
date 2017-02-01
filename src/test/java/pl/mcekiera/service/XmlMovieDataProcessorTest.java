@@ -1,6 +1,5 @@
 package pl.mcekiera.service;
 
-import org.junit.Before;
 import org.junit.Test;
 import pl.mcekiera.model.RawXmlMovieData;
 
@@ -12,12 +11,6 @@ import static org.junit.Assert.*;
 public class XmlMovieDataProcessorTest {
     private XmlMovieDataProcessor processor = new XmlMovieDataProcessor();
     private ClassLoader loader = getClass().getClassLoader();
-
-
-    @Before
-    public void setUp() {
-
-    }
 
     @Test
     public void fetchDataTest() {

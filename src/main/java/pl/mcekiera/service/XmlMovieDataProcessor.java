@@ -31,7 +31,7 @@ public class XmlMovieDataProcessor {
         try {
             URL url = new URL(rssUrl);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = db = dbf.newDocumentBuilder();
+            DocumentBuilder db = dbf.newDocumentBuilder();
             Document xmlDoc = db.parse(url.openStream());
             data = parseData(xmlDoc);
             return true;
@@ -62,8 +62,7 @@ public class XmlMovieDataProcessor {
             String title = list.item(i).getChildNodes().item(1).getTextContent();
             String link = list.item(i).getChildNodes().item(3).getTextContent();
             String date = list.item(i).getChildNodes().item(5).getTextContent();
-            RawXmlMovieData movie = new RawXmlMovieData(title, link, date);
-            data.add(movie);
+            data.add(new RawXmlMovieData(title, link, date));
         }
 
         return data;
