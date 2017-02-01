@@ -2,15 +2,25 @@ package pl.mcekiera.model;
 
 public class RawJsonMovieData {
     private String title;
-    private int year;
+    private String year;
     private String genre;
-    private double rating;
+    private String rating;
+    private String imdbId;
+
+    public RawJsonMovieData(String title, String year, String genre, String rating, String imdbId) {
+        this.title = title;
+        this.year = year;
+        this.genre = genre;
+        this.rating = rating;
+        this.imdbId = imdbId;
+    }
+
 
     public String getTitle() {
         return title;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
@@ -18,15 +28,12 @@ public class RawJsonMovieData {
         return genre;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public RawJsonMovieData(String title, int year, String genre, double rating) {
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-        this.rating = rating;
+    public String getImdbId() {
+        return imdbId;
     }
 
 

@@ -1,11 +1,10 @@
 package pl.mcekiera.service;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import pl.mcekiera.model.RawXmlMovieData;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +29,17 @@ public class XmlMovieDataProcessor {
 
         try {
             URL url = new URL(rssUrl);
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document xmlDoc = db.parse(url.openStream());
+
+//            String out = new Scanner(new URL(rssUrl).openStream(), "UTF-8").useDelimiter("\\A").next();
+//            out = out.replace("”|”","\"");
+//            System.out.println(out);
+//            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+//            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document xmlDoc = Jsoup.connect(rssUrl).get();
             data = parseData(xmlDoc);
             return true;
         } catch (Exception ex) {
+
             ex.printStackTrace();
             return false;
         }
@@ -55,13 +59,13 @@ public class XmlMovieDataProcessor {
      * @return list of retrieved RawXmlMovieData objects.
      */
     private List<RawXmlMovieData> parseData(Document doc) {
-        NodeList list = doc.getElementsByTagName("item");
+        Elements list = doc.getElementsByTag("item");
         List<RawXmlMovieData> data = new ArrayList<>();
 
-        for (int i = 0; i < list.getLength(); i++) {
-            String title = list.item(i).getChildNodes().item(1).getTextContent();
-            String link = list.item(i).getChildNodes().item(3).getTextContent();
-            String date = list.item(i).getChildNodes().item(5).getTextContent();
+        for (int i = 0; i < list.size(); i++) {
+            String title = list.get(i).getElementsByTag("title").text();
+            String link = list.get(i).getElementsByTag("link").text();
+            String date = list.get(i).getElementsByTag("pubDate").text();
             data.add(new RawXmlMovieData(title, link, date));
         }
 
