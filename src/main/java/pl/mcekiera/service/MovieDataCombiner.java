@@ -36,8 +36,6 @@ public class MovieDataCombiner {
         matcher.find();
         title = matcher.group(1).replaceAll("[\\s_.]","+");
         year = null == matcher.group(2) ? "" : "&y=" + matcher.group(2);
-        System.out.println(xmlData.getTitle());
-        System.out.println(title);
 
         if(jsonProcessor.fetchData("http://www.omdbapi.com/?t=" + title + year)) {
             RawJsonMovieData data = jsonProcessor.getRawJsonMovieData();
@@ -55,7 +53,7 @@ public class MovieDataCombiner {
 
     public static void main(String[] args) {
         MovieDataCombiner combiner = new MovieDataCombiner();
-        combiner.getMovieData("https://yourbittorrent.com/movies/rss.xml").forEach(Object::toString);
+        combiner.getMovieData("https://yourbittorrent.com/movies/rss.xml").forEach(System.out::println);
 
     }
 }

@@ -19,7 +19,6 @@ public class JsonMovieDataProcessor {
 
             Scanner scanner = new Scanner(request.openStream());
             String response = scanner.useDelimiter("\\Z").next();
-            System.out.println(response);
             JSONObject json = new JSONObject(response);
             scanner.close();
 

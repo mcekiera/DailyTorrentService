@@ -1,8 +1,8 @@
 package pl.mcekiera.model;
 
-public class Movie {
-    private String torrentName;
+public class MovieBuilder {
     private String title;
+    private String torrentName;
     private String year;
     private String rating;
     private String genre;
@@ -10,47 +10,48 @@ public class Movie {
     private String publication;
     private String imdbId;
 
-    public Movie() {
-
-    }
-
-    public Movie(String title, String torrentName, int year, double rating, String genre, String torrentUrl, String publication, String imdbId) {
-
-    }
-
-    public Movie setTitle(String title) {
+    public MovieBuilder setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    public Movie setYear(String year) {
+    public MovieBuilder setTorrentName(String torrentName) {
+        this.torrentName = torrentName;
+        return this;
+    }
+
+    public MovieBuilder setYear(String year) {
         this.year = year;
         return this;
     }
 
-    public Movie setRating(String rating) {
+    public MovieBuilder setRating(String rating) {
         this.rating = rating;
         return this;
     }
 
-    public Movie setGenre(String genre) {
+    public MovieBuilder setGenre(String genre) {
         this.genre = genre;
         return this;
     }
 
-    public Movie setTorrentUrl(String torrentUrl) {
+    public MovieBuilder setTorrentUrl(String torrentUrl) {
         this.torrentUrl = torrentUrl;
         return this;
     }
 
-    public Movie setPublication(String publication) {
+    public MovieBuilder setPublication(String publication) {
         this.publication = publication;
         return this;
     }
 
-    public Movie setImdbId(String imdbId) {
+    public MovieBuilder setImdbId(String imdbId) {
         this.imdbId = imdbId;
         return this;
+    }
+
+    public Movie build() {
+
     }
 
     public String getTitle() {
@@ -81,9 +82,7 @@ public class Movie {
         return imdbId;
     }
 
-    @Override
-    public String toString() {
-        return title + "-" + year + "-" + rating + "-" + genre;
+    public String getTorrentName() {
+        return torrentName;
     }
-
 }
