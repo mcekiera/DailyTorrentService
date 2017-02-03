@@ -15,7 +15,7 @@ public class MovieBuilder {
     private String imdbId = "";
 
     public Movie build() {
-       return new Movie(title, torrentName, year, rating, genre,torrentUrl, publication, imdbId);
+       return new Movie(title, year, rating, genre, imdbId, torrentName, torrentUrl, publication);
     }
 
     public String getTitle() {
@@ -41,7 +41,8 @@ public class MovieBuilder {
     }
 
     public MovieBuilder setRating(String rating) {
-        this.rating = Double.valueOf(rating.replaceAll("[^\\d.]",""));
+        String temp = rating.replaceAll("[^\\d.]","");
+        this.rating = temp.equals("") ? 0.0 : Double.valueOf(temp);
         return this;
     }
 

@@ -12,7 +12,7 @@ public class Movie {
     private final Date publicationDate;
     private final String imdbId;
 
-    public Movie(String title, String torrentName, int year, double rating, String genre, String torrentUrl, Date publicationDate, String imdbId) {
+    public Movie(String title, int year, double rating, String genre, String imdbId, String torrentName, String torrentUrl, Date publicationDate) {
         this.title = title;
         this.torrentName = torrentName;
         this.year = year;
