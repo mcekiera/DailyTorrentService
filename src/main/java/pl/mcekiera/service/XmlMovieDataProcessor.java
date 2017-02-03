@@ -36,6 +36,7 @@ public class XmlMovieDataProcessor {
 //            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 //            DocumentBuilder db = dbf.newDocumentBuilder();
             Document xmlDoc = Jsoup.connect(rssUrl).get();
+            System.out.println(xmlDoc.toString());
             data = parseData(xmlDoc);
             return true;
         } catch (Exception ex) {
@@ -67,6 +68,7 @@ public class XmlMovieDataProcessor {
             String link = list.get(i).getElementsByTag("link").text();
             String date = list.get(i).getElementsByTag("pubDate").text();
             data.add(new RawXmlMovieData(title, link, date));
+
         }
 
         return data;

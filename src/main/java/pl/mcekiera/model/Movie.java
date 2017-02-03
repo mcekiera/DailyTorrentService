@@ -1,67 +1,37 @@
 package pl.mcekiera.model;
 
+import java.util.Date;
+
 public class Movie {
-    private String torrentName;
-    private String title;
-    private String year;
-    private String rating;
-    private String genre;
-    private String torrentUrl;
-    private String publication;
-    private String imdbId;
+    private final String torrentName;
+    private final String title;
+    private final int year;
+    private final double rating;
+    private final String genre;
+    private final String torrentUrl;
+    private final Date publicationDate;
+    private final String imdbId;
 
-    public Movie() {
-
-    }
-
-    public Movie(String title, String torrentName, int year, double rating, String genre, String torrentUrl, String publication, String imdbId) {
-
-    }
-
-    public Movie setTitle(String title) {
+    public Movie(String title, String torrentName, int year, double rating, String genre, String torrentUrl, Date publicationDate, String imdbId) {
         this.title = title;
-        return this;
-    }
-
-    public Movie setYear(String year) {
+        this.torrentName = torrentName;
         this.year = year;
-        return this;
-    }
-
-    public Movie setRating(String rating) {
         this.rating = rating;
-        return this;
-    }
-
-    public Movie setGenre(String genre) {
         this.genre = genre;
-        return this;
-    }
-
-    public Movie setTorrentUrl(String torrentUrl) {
         this.torrentUrl = torrentUrl;
-        return this;
-    }
-
-    public Movie setPublication(String publication) {
-        this.publication = publication;
-        return this;
-    }
-
-    public Movie setImdbId(String imdbId) {
+        this.publicationDate = publicationDate;
         this.imdbId = imdbId;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public String getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -73,17 +43,19 @@ public class Movie {
         return torrentUrl;
     }
 
-    public String getPublication() {
-        return publication;
+    public Date getPublication() {
+        return publicationDate;
     }
 
     public String getImdbId() {
         return imdbId;
     }
 
+    public String getTorrentName() { return torrentName; }
+
     @Override
     public String toString() {
-        return title + "-" + year + "-" + rating + "-" + genre;
+        return title + "-" + year + "-" + rating + "-" + genre + "-" + publicationDate;
     }
 
 }

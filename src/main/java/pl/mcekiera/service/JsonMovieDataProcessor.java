@@ -1,10 +1,8 @@
 package pl.mcekiera.service;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import pl.mcekiera.model.RawJsonMovieData;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -21,6 +19,7 @@ public class JsonMovieDataProcessor {
             String response = scanner.useDelimiter("\\Z").next();
             JSONObject json = new JSONObject(response);
             scanner.close();
+            System.out.println(json.toString());
 
             data = new RawJsonMovieData(json.getString("Title"),
                     json.getString("Year"),
@@ -29,7 +28,7 @@ public class JsonMovieDataProcessor {
                     json.getString("imdbID"));
 
             return true;
-        } catch (IOException | JSONException e) {
+        } catch (Exception e) {
             System.out.println(url);
             e.printStackTrace();
             return false;
