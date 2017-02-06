@@ -96,4 +96,9 @@ public class MovieBuilder {
         this.torrentName = torrentName;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return title + " " + torrentName + " " + year + " " + rating + " " + genre + " " + imdbId;
+    }
 }

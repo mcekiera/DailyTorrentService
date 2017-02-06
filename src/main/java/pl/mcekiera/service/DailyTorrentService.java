@@ -5,6 +5,7 @@ import pl.mcekiera.service.DataSource.DataSource;
 import pl.mcekiera.service.DataSource.InvalidDataSourceException;
 import pl.mcekiera.service.DataSource.TorrentMovieDataSource;
 
+import java.util.List;
 import java.util.Locale;
 
 public class DailyTorrentService {
@@ -13,10 +14,12 @@ public class DailyTorrentService {
     public DailyTorrentService() {
         Locale.setDefault(Locale.ENGLISH);
         try {
-
-            source.getData().forEach(System.out::println);
+            System.out.print("Start");
+            List<Movie> list = source.getData();
+            System.out.print(list.size());
             System.out.print("Done");
         } catch (InvalidDataSourceException e) {
+            System.out.print("Main ex");
             e.printStackTrace();
             e.getMessage();
         }

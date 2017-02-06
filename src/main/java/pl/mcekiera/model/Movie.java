@@ -43,7 +43,7 @@ public class Movie {
         return torrentUrl;
     }
 
-    public Date getPublication() {
+    public Date getPublicationDate() {
         return publicationDate;
     }
 
@@ -56,6 +56,26 @@ public class Movie {
     @Override
     public String toString() {
         return title + "-" + year + "-" + rating + "-" + genre + "-" + publicationDate;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        boolean result;
+        if((o == null) || (getClass() != o.getClass())){
+            result = false;
+        } else{
+            Movie movie = (Movie)o;
+            result = title.equals(movie.getTitle()) &&
+                    year == movie.getYear() &&
+                    rating == movie.getRating() &&
+                    genre.equals(movie.getGenre()) &&
+                    torrentUrl.equals(movie.getTorrentUrl()) &&
+                    publicationDate.toString().equals(movie.getPublication().toString()) &&
+                    imdbId.equals(movie.getImdbId()) &&
+                    torrentName.equals(movie.getTorrentName());
+        }
+
+        return result;
     }
 
 }

@@ -1,8 +1,10 @@
 package pl.mcekiera.service.DataSource;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import pl.mcekiera.model.MovieBuilder;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +25,15 @@ public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
 
 
     @Override
-    public List<MovieBuilder> getData() throws InvalidDataSourceException {
-        List<MovieBuilder> result = collectData();
-        if(result.size() == 0) {
-            throw new InvalidDataSourceException(source);
+    public List<MovieBuilder> getData() {
+        List<MovieBuilder> result = null;
+        try {
+            result = collectData();
+            if (result.size() == 0) {
+                throw new InvalidDataSourceException(source);
+            }
+        } catch (InvalidDataSourceException ex) {
+            System.out.println(ex.getMessage());
         }
         return result;
     }
@@ -34,12 +41,15 @@ public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
     private List<MovieBuilder> collectData() {
         String title;
         String year;
+        Matcher matcher;
         List<MovieBuilder> result = new ArrayList<>();
+
         for (MovieBuilder builder : data) {
             title = "?t=" + builder.getTorrentName();
-            Matcher matcher = pattern.matcher(title);
+            matcher = pattern.matcher(title);
+
             if(matcher.find()) {
-                title = matcher.group(1).replaceAll("[\\s_.]", "+");
+                title = matcher.group(1).replaceAll("[\\s_.-]+", "+");
                 year = null == matcher.group(2) ? "" : "&y=" + matcher.group(2);
                 try {
                     result.add(fetchData(builder, source + title + year));
@@ -68,7 +78,7 @@ public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
                     .setImdbId(json.getString("imdbID"))
                     .setRating(json.getString("imdbRating"));
 
-        } catch (Exception e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             throw new InvalidDataSourceException(url);
         }

@@ -42,7 +42,9 @@ public class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
             title = list.get(i).getElementsByTag("title").text();
             link = list.get(i).getElementsByTag("link").text();
             date = list.get(i).getElementsByTag("pubDate").text();
-            data.add(new MovieBuilder().setTorrentName(title).setTorrentUrl(link).setPublication(date));
+            MovieBuilder temp = new MovieBuilder().setTorrentName(title).setTorrentUrl(link).setPublication(date);
+            System.out.println(temp.toString());
+            data.add(temp);
         }
 
         return data;

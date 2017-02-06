@@ -1,6 +1,7 @@
 package pl.mcekiera.service.DataSource;
 
 import pl.mcekiera.model.Movie;
+import pl.mcekiera.model.MovieBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +16,25 @@ public class TorrentMovieDataSource implements DataSource<Movie> {
         return combineSources();
     }
 
-    private List<Movie> combineSources() throws InvalidDataSourceException {
+    private List<Movie> combineSources() {
+        List<Movie> movies = new ArrayList<>();
+        List<MovieBuilder> temp = new ArrayList<>();
+
+
         System.out.print("Open service");
         YourBittorentRssDataSource rssDataSource = new YourBittorentRssDataSource(rssUrl);
         System.out.print("RSS retrieved");
-        OmdbJsonDataSource jsonDataSource = new OmdbJsonDataSource(jsonUrl,rssDataSource.getData());
+        try {
+            temp = rssDataSource.getData();
+        } catch (InvalidDataSourceException e) {
+            e.printStackTrace();
+        }
+        OmdbJsonDataSource jsonDataSource = new OmdbJsonDataSource(jsonUrl,temp);
         System.out.print("JSON retrieved");
-        List<Movie> movies = new ArrayList<>();
+
 
         jsonDataSource.getData().forEach(item -> movies.add(item.build()));
+
         return movies;
     }
 

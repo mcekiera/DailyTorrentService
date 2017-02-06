@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="pl.mcekiera.model.Movie" table="movies" schema="torrent">
+        <id name="imdbId" column="id"/>
+        <property name="title" column="title"/>
+        <property name="torrentUrl" column="link"/>
+        <property name="rating" column="rating"/>
+        <property name="year" column="year"/>
+        <property name="genre" column="genre"/>
+        <property name="publicationDate" type="date" column="publicationDate"/>
+    </class>
+</hibernate-mapping>

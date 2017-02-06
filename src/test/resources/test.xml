@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <atom:link href="https://yourbittorrent.com/movies/rss.xml" rel="self" type="application/rss+xml"/>
+        <title>Test</title>
+        <link>Test</link>
+        <description>Test</description>
+        <language>Test</language>
+        <docs>Test</docs>
+        <generator>Test</generator>
+        <item>
+            <title>Title</title>
+            <guid isPermaLink="true">None</guid>
+            <pubDate>Fri, 20 Jan 2017 08:50:41 +0100</pubDate>
+            <category>Movies</category>
+            <link>Test.html</link>
+            <description><![CDATA[
+                Category: <a href="https://yourbittorrent.com/movies.html">Movies</a><br>
+                Seeds: 0<br>Leechers: 0<br>Size: 704 MB<br><br><a href="https://yourbittorrent.com/torrent/10516165/saat-uchakkey-hindi-p-mp3-zi%24t-wwrg.html">More info at YourBittorrent</a> ]]></description>
+            <comments>None.html</comments>
+            <category domain="https://yourbittorrent.com/movies.html">Movies</category>
+            <enclosure length="738575521" type="application/x-bittorrent" url="https://yourbittorrent.com/down/10516165.torrent"/>
+        </item>
+    </channel>
+</rss>
