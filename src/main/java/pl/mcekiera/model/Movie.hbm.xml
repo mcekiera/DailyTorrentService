@@ -3,7 +3,6 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
     <class name="pl.mcekiera.model.Movie" table="movies" schema="torrent">
         <id name="imdbId" column="id"/>
         <property name="title" column="title"/>
@@ -11,6 +10,7 @@
         <property name="rating" column="rating"/>
         <property name="year" column="year"/>
         <property name="genre" column="genre"/>
-        <property name="publicationDate" type="date" column="publicationDate"/>
+        <property name="publicationDate"/>
+        <property name="torrentName"/>
     </class>
 </hibernate-mapping>

@@ -10,5 +10,8 @@
     <property name="connection.password">1a2b3x</property>
     <property name="default_schema">torrent</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <mapping class="pl.mcekiera.model.Movie"/>
   </session-factory>
+
+
 </hibernate-configuration>
