@@ -6,14 +6,12 @@ import java.util.List;
 public class Profile {
     private static int idCount = 0;
 
-    private final int id;
-    private final String login;
+    private final String id;
     private List<String> favourites;
     private List<String> disliked;
 
-    public Profile(String login) {
-        this.id = ++idCount;
-        this.login = login;
+    public Profile(String id) {
+        this.id = id;
     }
 
     public void addFavourites(String genre) {

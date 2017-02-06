@@ -44,7 +44,7 @@ public class MovieDAOTest {
     public void saveFindDelete() {
 
         MovieDAO point = new MovieDAO();
-        point.save(movie);
+        point.saveOrUpdate(movie);
         Movie same = point.find(movie.getImdbId());
         assertEquals("Should be same as retrieved from DB",movie,same);
 

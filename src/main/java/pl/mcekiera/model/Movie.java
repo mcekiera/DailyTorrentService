@@ -116,6 +116,12 @@ public class Movie implements Serializable{
         return title + "-" + year + "-" + rating + "-" + genre + "-" + publicationDate;
     }
 
+    /**
+     * Determines if given object is equal to this object. In comparison use all fields, with exception of publication
+     * date, meaning date of torrent file publication, which is not relevant information in movie context.
+     * @param o  object to coparison.
+     * @return  tru if both objects are equal
+     */
     @Override
     public boolean equals(Object o){
         boolean result;
@@ -128,7 +134,6 @@ public class Movie implements Serializable{
                     rating == movie.getRating() &&
                     genre.equals(movie.getGenre()) &&
                     torrentUrl.equals(movie.getTorrentUrl()) &&
-//                    publicationDate.toString().equals(movie.getPublicationDate().toString()) &&
                     imdbId.equals(movie.getImdbId()) &&
                     torrentName.equals(movie.getTorrentName());
         }

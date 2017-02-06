@@ -7,6 +7,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
+/**
+ * Helper class for Hibernate service.
+ */
 public class HibernateUtility {
 
     private static SessionFactory sessionFactory;
@@ -30,6 +33,9 @@ public class HibernateUtility {
         }
     }
 
+    /**
+     * @return  SessionFactory object necessary for database connection by Hibernate.
+     */
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }

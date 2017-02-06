@@ -2,6 +2,7 @@ package pl.mcekiera.respository;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pl.mcekiera.model.Movie;
 
 import java.text.ParseException;
@@ -9,32 +10,63 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Movie class Data Access Object.
+ */
 public class MovieDAO {
+    private SessionFactory factory = HibernateUtility.getSessionFactory();
 
-    public void save(Movie movie) {
-        Session session = HibernateUtility.getSessionFactory().openSession();
+    /**
+     * Saves or update record of given movie represented by given Movie object.
+     * @param movie
+     */
+    public void saveOrUpdate(Movie movie) {
+        Session session = factory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(movie);
+
+        try {
+            session.saveOrUpdate(movie);
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+
         session.getTransaction().commit();
         session.close();
     }
 
+    /**
+     * Retrieve movie of given imdbId from database.
+     * @param id of movie from IMDB
+     * @return Movie object.
+     */
     public Movie find(String id) {
         Movie movie = null;
-        Session session = HibernateUtility.getSessionFactory().openSession();
+        Session session = factory.openSession();
+
         try {
            movie = (Movie) session.find(Movie.class, id);
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }
+
         session.close();
         return movie;
     }
 
+    /**
+     * Removes records of movie represented by given Movie object from database
+     * @param movie
+     */
     public void delete(Movie movie) {
-        Session session = HibernateUtility.getSessionFactory().openSession();
+        Session session = factory.openSession();
         session.beginTransaction();
-        session.delete(movie);
+
+        try {
+            session.delete(movie);
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+
         session.getTransaction().commit();
         session.close();
     }
@@ -65,7 +97,7 @@ public class MovieDAO {
 
         Movie movie = new Movie(title,year,rating,genre,imdbId,torrenName,link,d);
 //
-//        session.save(movie);
+//        session.saveOrUpdate(movie);
 //        session.getTransaction().commit();
 
         session.delete(movie);
