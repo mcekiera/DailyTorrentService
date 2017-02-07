@@ -3,7 +3,7 @@ package pl.mcekiera.service.respository;
 import org.junit.Before;
 import org.junit.Test;
 import pl.mcekiera.model.Movie;
-import pl.mcekiera.respository.MovieDAO;
+import pl.mcekiera.respository.DataAccessObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +12,7 @@ import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
-public class MovieDAOTest {
+public class DataAccessObjectTest {
     Movie movie;
 
     @Before
@@ -43,7 +43,7 @@ public class MovieDAOTest {
     @Test
     public void saveFindDelete() {
 
-        MovieDAO point = new MovieDAO();
+        DataAccessObject<Movie> point = new DataAccessObject<>();
         point.saveOrUpdate(movie);
         Movie same = point.find(movie.getImdbId());
         assertEquals("Should be same as retrieved from DB",movie,same);

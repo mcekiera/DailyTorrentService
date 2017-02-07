@@ -1,41 +1,80 @@
 package pl.mcekiera.model;
 
-import java.util.Collections;
-import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-public class Profile {
-    private static int idCount = 0;
+@Entity
+public class Profile implements Serializable{
+    private String id;
+    private String whitelist;
+    private String blacklist;
+    private double minRating;
 
-    private final String id;
-    private List<String> favourites;
-    private List<String> disliked;
+    public Profile() {}
 
-    public Profile(String id) {
+    @Id
+    @Column(name = "id")
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void addFavourites(String genre) {
-        favourites.add(genre);
+    @Basic
+    @Column(name = "whitelist")
+    public String getWhitelist() {
+        return whitelist;
     }
 
-    public void removeFavourites(String genre) {
-        favourites.remove(genre);
+    public void setWhitelist(String whitelist) {
+        this.whitelist = whitelist;
     }
 
-    public List<String> getFavourites() {
-        return Collections.unmodifiableList(favourites);
+    @Basic
+    @Column(name = "blacklist")
+    public String getBlacklist() {
+        return blacklist;
     }
 
-    public void addDisliked(String genre) {
-        disliked.add(genre);
+    public void setBlacklist(String blacklist) {
+        this.blacklist = blacklist;
     }
 
-    public void removeDisliked(String genre) {
-        disliked.remove(genre);
+
+    @Basic
+    @Column(name = "minRating")
+    public double getMinRating() {
+        return minRating;
     }
 
-    public List<String> getDisliked() {
-        return Collections.unmodifiableList(disliked);
+    public void setMinRating(double minRating) {
+        this.minRating = minRating;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Profile profile = (Profile) o;
+
+        if (!getId().equals(profile.getId())) return false;
+        if (getWhitelist() != null ? !getWhitelist().equals(profile.getWhitelist()) : profile.getWhitelist() != null)
+            return false;
+        return getBlacklist() != null ? getBlacklist().equals(profile.getBlacklist()) : profile.getBlacklist() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId().hashCode();
+        result = 31 * result + (getWhitelist() != null ? getWhitelist().hashCode() : 0);
+        result = 31 * result + (getBlacklist() != null ? getBlacklist().hashCode() : 0);
+        return result;
+    }
 }
