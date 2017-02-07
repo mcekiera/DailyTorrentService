@@ -23,16 +23,34 @@ public class DAOTest {
     @Test
     public void profileDAOTest() {
         Profile profile = new Profile("test@test.pl","Action","Romance",6.0);
+        Profile profile2 = new Profile("test@test2.pl","Drama","Romance",6.0);
+        Profile profile3 = new Profile("test@test3.pl","Comedy","Romance",6.0);
 
         DataAccessObject<Profile> point = new DataAccessObject<>(Profile.class);
 
         point.saveOrUpdate(profile);
+        point.saveOrUpdate(profile2);
+        point.saveOrUpdate(profile3);
+
         Profile same = point.find("test@test.pl");
+        Profile same2 = point.find("test@test2.pl");
+        Profile same3 = point.find("test@test3.pl");
+
         assertEquals("Profile should be equal to provided",profile,same);
+        assertEquals("Profile should be equal to provided",profile2,same2);
+        assertEquals("Profile should be equal to provided",profile3,same3);
 
         point.delete(profile);
+        point.delete(profile2);
+        point.delete(profile3);
+
         same = point.find("test@test.pl");
+        same2 = point.find("test@test2.pl");
+        same3 = point.find("test@test3.pl");
+
         assertEquals("Profile should be null after removing from DB",null,same);
+        assertEquals("Profile should be null after removing from DB",null,same2);
+        assertEquals("Profile should be null after removing from DB",null,same3);
     }
     @Test
     public void MovieDaoTest() {

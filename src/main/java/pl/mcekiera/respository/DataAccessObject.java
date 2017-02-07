@@ -3,12 +3,6 @@ package pl.mcekiera.respository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import pl.mcekiera.model.Movie;
-import pl.mcekiera.model.Profile;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Provide interface for Hibernate common actions. Parametrized class,
@@ -79,42 +73,4 @@ public class DataAccessObject<T> {
         session.close();
         return object;
     }
-
-    public static void main(String[] args) {
-        String title = "Title";
-        int year = 2000;
-        double rating = 1.00;
-        String genre = "Genre";
-        String imdbId = "imdbId";
-        String torrenName = "TorrentName";
-        String link = "Link";
-
-        String date = "Sun, 05 Feb 2017 00:00:00 +0000";
-        Date publicationDate = null;
-        java.sql.Date sqlDate = null;
-
-        try {
-            publicationDate = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z").parse(date);
-            sqlDate = new java.sql.Date(publicationDate.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Movie movie = new Movie(title,year,rating,genre,imdbId,torrenName,link,publicationDate);
-
-        DataAccessObject<Movie> point = new DataAccessObject<>(Movie.class);
-
-        point.saveOrUpdate(movie);
-        Movie same = point.find(movie.getImdbId());
-
-
-        point.delete(movie);
-        same = point.find(movie.getImdbId());
-
-        DataAccessObject<Profile> profileDataAccessObject = new DataAccessObject<>(Profile.class);
-        Profile profile = new Profile("test@test.pl","Action","Romance",6.0);
-
-       profileDataAccessObject.delete(profileDataAccessObject.find("test@test.pl"));
-    }
-
 }

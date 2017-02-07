@@ -5,7 +5,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import pl.mcekiera.model.MovieBuilder;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +23,25 @@ public class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
     @Override
     public List<MovieBuilder> getData() throws InvalidDataSourceException {
         try {
-            Document xmlDoc = Jsoup.connect(source).get();
+            Document xmlDoc = fetchDocument(source);
             System.out.println("Fetching XML data from: " + source);
             return parseData(xmlDoc);
         } catch (IOException ex) {
             ex.printStackTrace();
             throw new InvalidDataSourceException(source);
         }
+    }
+
+    private Document fetchDocument(String source) throws IOException {
+        Document xmlDoc = null;
+        try {
+            xmlDoc = Jsoup.connect(source).get();
+        } catch (MalformedURLException | IllegalArgumentException ex) {
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource(source).getFile());
+            xmlDoc = Jsoup.parse(file, "UTF-8");
+        }
+        return xmlDoc;
     }
 
 

@@ -81,4 +81,9 @@ public class Profile implements Serializable{
         result = 31 * result + (getBlacklist() != null ? getBlacklist().hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return id;
+    }
 }

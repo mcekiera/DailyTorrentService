@@ -1,6 +1,7 @@
 package pl.mcekiera.service;
 
 import pl.mcekiera.model.Movie;
+import pl.mcekiera.respository.DataAccessObject;
 import pl.mcekiera.service.DataSource.DataSource;
 import pl.mcekiera.service.DataSource.InvalidDataSourceException;
 import pl.mcekiera.service.DataSource.TorrentMovieDataSource;
@@ -16,8 +17,11 @@ public class DailyTorrentService {
         try {
             System.out.print("Start");
             List<Movie> list = source.getData();
-            System.out.print(list.size());
-            System.out.print("Done");
+            DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
+
+            list.forEach(dao::saveOrUpdate);
+            System.out.println(list.size());
+            System.out.println("Done");
         } catch (InvalidDataSourceException e) {
             System.out.print("Main ex");
             e.printStackTrace();
