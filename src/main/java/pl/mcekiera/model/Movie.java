@@ -7,20 +7,45 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Object storing basic data about movie and torrent file with this movie.
+ */
 @Entity
 public class Movie implements Serializable{
+    /**
+     * Name of a torrent file.
+     */
     private String torrentName;
+    /**
+     * Title of movie.
+     */
     private String title;
+    /**
+     * Year of movie release.
+     */
     private int year;
+    /**
+     * Rating of movie in Internet Movie Databese (IMDB).
+     */
     private double rating;
+    /**
+     * Genre of the movie.
+     */
     private String genre;
+    /**
+     * URL to torrent file with this movie.
+     */
     private String torrentUrl;
+    /**
+     * Date of publication of torrent file.
+     */
     private Date publicationDate;
+    /**
+     * ID of movie in IMDB.
+     */
     private String imdbId;
 
-    public Movie() {
-
-    }
+    public Movie() {}
 
     public Movie(String title, int year, double rating, String genre, String imdbId, String torrentName, String torrentUrl, Date publicationDate) {
         this.title = title;
