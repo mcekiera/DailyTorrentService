@@ -3,4 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    
+    <servlet>
+        <servlet-name>Simple</servlet-name>
+        <servlet-class>pl.mcekiera.service.MainServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Simple</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -4,6 +4,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.TypedQuery;
+import java.util.List;
+
 /**
  * Provide interface for Hibernate common actions. Parametrized class,
  * @param <T> Class for which DataAccessObject provide Hibernate services.
@@ -72,5 +75,19 @@ public class DataAccessObject<T> {
 
         session.close();
         return object;
+    }
+
+    /**
+     * Execute a query on database and return a list of objects.
+     * @param sqlQuery query to execute.
+     * @return List of objects, if query id properly designed, should return object of DataAccesObject's
+     * generic type, in other situation return just Objects list.
+     */
+    public List<T> query(String sqlQuery) {
+        Session session = factory.openSession();
+        TypedQuery query = session.createQuery(sqlQuery,typeParameterClass);
+        List<T> result = query.getResultList();
+        session.close();
+        return result;
     }
 }

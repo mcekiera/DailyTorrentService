@@ -21,6 +21,22 @@ public class DAOTest {
     }
 
     @Test
+    public void queryTest() {
+//        DataAccessObject<Profile> point = new DataAccessObject<>(Profile.class);
+//        Profile profile = point.query("from Profile p where p.id = 'cekin@vp.pl'").get(0);
+//        System.out.println(profile);
+//        Profile same = new Profile("cekin@vp.pl","Action, Sci-Fi, Drama, Fantasy","Romance",7.0);
+//        assertEquals(profile,same);
+    }
+
+    @Test
+    public void queryNullTest() {
+//        DataAccessObject<Profile> point = new DataAccessObject<>(Profile.class);
+//        List<Profile> profiles = point.query("from Profile p where p.id = 'fakeId'");
+//        assertTrue(profiles.size() == 0);
+    }
+
+    @Test
     public void profileDAOTest() {
         Profile profile = new Profile("test@test.pl","Action","Romance",6.0);
         Profile profile2 = new Profile("test@test2.pl","Drama","Romance",6.0);
