@@ -1,35 +1,30 @@
 package pl.mcekiera.service;
 
 import pl.mcekiera.model.Movie;
-import pl.mcekiera.respository.DataAccessObject;
 import pl.mcekiera.service.DataSource.DataSource;
-import pl.mcekiera.service.DataSource.InvalidDataSourceException;
 import pl.mcekiera.service.DataSource.TorrentMovieDataSource;
 
-import java.util.List;
 import java.util.Locale;
 
 public class DailyTorrentService {
     private DataSource<Movie> source = new TorrentMovieDataSource();
 
-    public DailyTorrentService() {
+    public void runService() {
         Locale.setDefault(Locale.ENGLISH);
-        try {
+//        try {
             System.out.print("Start");
-            List<Movie> list = source.getData();
-            DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
 
-            list.forEach(dao::saveOrUpdate);
-            System.out.println(list.size());
+//            List<Movie> list = source.getData();
+//            DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
+//            list.forEach(dao::saveOrUpdate);
+
+//            System.out.println(list.size());
             System.out.println("Done");
-        } catch (InvalidDataSourceException e) {
-            System.out.print("Main ex");
-            e.printStackTrace();
-            e.getMessage();
-        }
-    }
-
-    public static void main(String[] args) {
-        new DailyTorrentService();
+//        }
+//        catch (InvalidDataSourceException e) {
+//            System.out.print("Main ex");
+//            e.printStackTrace();
+//            e.getMessage();
+//        }
     }
 }
