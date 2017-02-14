@@ -2,14 +2,14 @@ package pl.mcekiera.controller;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import pl.mcekiera.service.DailyTorrentService;
+import pl.mcekiera.service.DailyTorrentUpdate;
 
 @Controller
 public class UpdateController {
-    DailyTorrentService service = new DailyTorrentService();
+    DailyTorrentUpdate service = new DailyTorrentUpdate();
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(cron = "0 0 8-10 * * *")
     public void runService() {
         service.runService();
     }
