@@ -9,7 +9,7 @@ public class UpdateController {
     DailyTorrentUpdate service = new DailyTorrentUpdate();
 
 
-    @Scheduled(cron = "0 0 8-10 * * *")
+    @Scheduled(cron = "0 0 10,22 * * *")
     public void runService() {
         service.runService();
     }

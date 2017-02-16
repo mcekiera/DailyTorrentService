@@ -18,8 +18,8 @@ public class Profile implements Serializable{
 
     public Profile(String id, String whitelist, String blacklist, double minRating) {
         this.id = id;
-        this.whitelist = whitelist;
-        this.blacklist = blacklist;
+        this.whitelist = whitelist == null ? "" : whitelist;
+        this.blacklist = blacklist == null ? "" : blacklist;
         this.minRating = minRating;
     }
 
