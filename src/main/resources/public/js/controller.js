@@ -6,7 +6,10 @@ var ractive = new Ractive({
     el: '#main',
     template: '#template',
     data: {
-        movies: []
+        movies: [],
+        formatToQuery: function (title) {
+            return title.replace(/\s+/g,'+');
+        }
     }
 
 });
@@ -14,11 +17,10 @@ var ractive = new Ractive({
 var getMovies = function() {
 
     $.getJSON("/api/", function (data) {
-        data.forEach(function (a) {
-            console.log(a.title)
-        });
         ractive.set('movies', data)
     });
 } ;
 getMovies()
+
+$.post("/api/dis/",{ pid: 'cekin@vp.pl', mid: "tt4550098"});
 

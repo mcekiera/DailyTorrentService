@@ -39,7 +39,9 @@
                 <td><a href="http://www.imdb.com/title/{{imdbId}}" target="_blank">{{title}}</a></td>
                 <td>{{year}}</td>
                 <td>{{genre}}</td>
-                <td><a href="{{torrentUrl}}" target="_blank">{{torrentName}}</a></td>
+                <td>
+                    <a href="https://yourbittorrent.com/?c=1&q={{formatToQuery(title)}}+{{year}}" target="_blank">{{torrentName}}</a>
+                </td>
                 <td>{{rating}}</td>
             </tr>
             {{/each}}

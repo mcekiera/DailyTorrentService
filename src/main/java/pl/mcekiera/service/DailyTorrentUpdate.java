@@ -6,8 +6,9 @@ import pl.mcekiera.service.DataSource.DataSource;
 import pl.mcekiera.service.DataSource.InvalidDataSourceException;
 import pl.mcekiera.service.DataSource.TorrentMovieDataSource;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class DailyTorrentUpdate {
     private DataSource<Movie> source = new TorrentMovieDataSource();
@@ -17,11 +18,10 @@ public class DailyTorrentUpdate {
         try {
             System.out.print("Start");
 
-            List<Movie> list = source.getData();
+            Set<Movie> movies = new HashSet<>(source.getData());
             DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
-            list.forEach(dao::saveOrUpdate);
+            movies.forEach(dao::saveOrUpdate);
 
-            System.out.println(list.size());
             System.out.println("Done");
         }
         catch (InvalidDataSourceException e) {
@@ -29,5 +29,9 @@ public class DailyTorrentUpdate {
             e.printStackTrace();
             e.getMessage();
         }
+    }
+
+    public static void main(String[] args) {
+        new DailyTorrentUpdate().runService();
     }
 }

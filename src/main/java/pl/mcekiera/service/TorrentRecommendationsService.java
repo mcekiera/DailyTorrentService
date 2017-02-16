@@ -13,50 +13,28 @@ public class TorrentRecommendationsService {
         DataAccessObject<Movie> moviesDAO = new DataAccessObject<>(Movie.class);
         Profile user = profileDAO.find(profileId);
 
-        return moviesDAO.query(createQuery(user.getMinRating(),user.getWhitelist(),user.getBlacklist()));
+        return moviesDAO.query(createQuery(user, user.getMinRating(),user.getWhitelist(),user.getBlacklist()));
     }
 
-    private String createQuery(double userRating, String userWhitelist, String userBlacklist) {
-        String whitelist = createAlternativesChain(userWhitelist, "like");
-        String blacklist = createAlternativesChain(userBlacklist, "not like");
-//
-//        if(!userWhitelist.equals("")) {
-//            whitelist = "and (";
-//            for (String item : userWhitelist.split(",")) {
-//                whitelist += "m.genre like '%" + item.trim() + "%' or ";
-//            }
-//            whitelist = whitelist.replaceAll("\\s*or\\s$", ")");
-//        }
-//
-//
-//        if(!userBlacklist.equals("")) {
-//            blacklist = "and (";
-//            for (String item : userBlacklist.split(",")) {
-//                if (!item.equals("")) {
-//                    blacklist += "m.genre not like '%" + item.trim() + "%' or ";
-//                }
-//            }
-//            blacklist = blacklist.replaceAll("\\s*or\\s$", ")");
-//        }
+    private String createQuery(Profile user, double userRating, String userWhitelist, String userBlacklist) {
+        String whitelist = createAlternativesChain(user.getWhitelist(), "LIKE");
+        String blacklist = createAlternativesChain(user.getBlacklist(), "NOT LIKE");
 
-        System.out.println("from Movie m where m.rating >= " + userRating +
-                " and " + whitelist + " " + blacklist +
-                " order by m.publicationDate desc, rating desc");
-
-        return  "from Movie m where m.rating >= " + userRating + whitelist + blacklist +
-                " order by m.publicationDate desc, rating desc";
+        return  "FROM Movie m WHERE m.rating >= " + user.getMinRating() + whitelist + blacklist +
+                "AND (m.imdbId NOT IN (SELECT d.imdbId FROM Dismiss d WHERE d.profileId = '" + user + "'))" +
+                " ORDER BY m.publicationDate desc, rating desc";
     }
 
     private String createAlternativesChain(String listAsString, String connector) {
         String result = "";
         if(!listAsString.equals("")) {
-            result = "and (";
+            result = " AND (";
             for (String item : listAsString.split(",")) {
                 if (!item.equals("")) {
-                    result += "m.genre " + connector + " '%" + item.trim() + "%' or ";
+                    result += "m.genre " + connector + " '%" + item.trim() + "%' OR ";
                 }
             }
-            result = result.replaceAll("\\s*or\\s$", ")");
+            result = result.replaceAll("(?i)\\s*or\\s$", ")");
         }
         return result;
     }
