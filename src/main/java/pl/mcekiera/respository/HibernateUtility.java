@@ -1,5 +1,6 @@
 package pl.mcekiera.respository;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -11,13 +12,13 @@ import org.hibernate.service.ServiceRegistry;
  * Helper class for Hibernate service.
  */
 public class HibernateUtility {
-
+    private static Logger log = Logger.getLogger(HibernateUtility.class);
     private static SessionFactory sessionFactory;
     private static ServiceRegistry serviceRegistry;
 
     static {
         try {
-
+            log.info("Initializing session factory");
             serviceRegistry = new StandardServiceRegistryBuilder()
                     .configure( "hibernate.cfg.xml" )
                     .build();
@@ -28,8 +29,7 @@ public class HibernateUtility {
 
             sessionFactory = metadata.getSessionFactoryBuilder().build();
         } catch (HibernateException ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
     }
 

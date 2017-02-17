@@ -1,5 +1,6 @@
 package pl.mcekiera.respository;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,9 +18,11 @@ public class DataAccessObject<T> {
      * Instance of shared SessionFactory object, necessary for Hibernate integration.
      */
     private static SessionFactory factory = HibernateUtility.getSessionFactory();
+    private static Logger log = Logger.getLogger(DataAccessObject.class);
     private final Class<T> typeParameterClass;
 
     public DataAccessObject(Class<T> typeParameterClass) {
+        log.info("Creating DataAccessObject for for " + typeParameterClass.toString());
         this.typeParameterClass = typeParameterClass;
     }
     /**
@@ -30,10 +33,11 @@ public class DataAccessObject<T> {
         Session session = factory.openSession();
         session.beginTransaction();
 
+        log.info("Save or update: " + object.toString());
         try {
             session.saveOrUpdate(object);
         } catch (HibernateException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
 
         session.getTransaction().commit();
@@ -48,10 +52,11 @@ public class DataAccessObject<T> {
         Session session = factory.openSession();
         session.beginTransaction();
 
+        log.info("Delete: " + object.toString());
         try {
             session.delete(object);
         } catch (HibernateException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
 
         session.getTransaction().commit();
@@ -67,10 +72,11 @@ public class DataAccessObject<T> {
         T object = null;
         Session session = factory.openSession();
 
+        log.info("Find: " + id);
         try {
             object = session.find(typeParameterClass, id);
         } catch (HibernateException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage());
         }
 
         session.close();
@@ -84,6 +90,7 @@ public class DataAccessObject<T> {
      * generic type, in other situation return just Objects list.
      */
     public List<T> query(String sqlQuery) {
+        log.info("Query: " + sqlQuery);
         Session session = factory.openSession();
         TypedQuery<T> query = session.createQuery(sqlQuery,typeParameterClass);
         List<T> result = query.getResultList();
