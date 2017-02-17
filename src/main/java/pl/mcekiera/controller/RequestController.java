@@ -24,13 +24,15 @@ public class RequestController {
 
     @RequestMapping(value = "/profiles/", method = RequestMethod.PUT)
     public @ResponseBody
-    void addProfile(@RequestParam(value="id", defaultValue="") String id,
+    ResponseEntity addProfile(@RequestParam(value="id", defaultValue="") String id,
                            @RequestParam(value="rating") double rating,
                            @RequestParam(value="whitelist") String whitelist,
                            @RequestParam(value="blacklist") String blacklist){
 
         DataAccessObject<Profile> dao = new DataAccessObject<Profile>(Profile.class);
-        dao.saveOrUpdate(new Profile(id, whitelist, blacklist, rating));
+        Profile profile = new Profile(id, whitelist, blacklist, rating);
+        dao.saveOrUpdate(profile);
+        return  new ResponseEntity<String>(profile.toString(),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/dis/", method = RequestMethod.POST)
@@ -43,7 +45,7 @@ public class RequestController {
         try {
             dao.saveOrUpdate(dismiss);
         } catch (AssertionFailure ex) {
-            return new ResponseEntity<String>("Duplicate entry to database",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("Duplicate database entry",HttpStatus.BAD_REQUEST);
         }
         return  new ResponseEntity<String>(dismiss.toString(),HttpStatus.OK);
     }

@@ -1,5 +1,6 @@
 package pl.mcekiera.service.DataSource;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import pl.mcekiera.model.MovieBuilder;
@@ -13,11 +14,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
+    private static Logger log = Logger.getLogger(OmdbJsonDataSource.class);
     private final String source;
     private List<MovieBuilder> data;
     private final Pattern pattern;
 
     public OmdbJsonDataSource(String url, List<MovieBuilder> list) {
+        log.info("Retrieving movie data from URL: " + url);
         this.source = url;
         this.data = list;
         this.pattern = Pattern.compile("((?:.(?!(\\d{4})|HD|3D|LD|[\\[\\](){}]))*.).*(\\d{4})?.*");
@@ -63,6 +66,7 @@ public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
 
     private MovieBuilder fetchData(MovieBuilder builder, String url) throws InvalidDataSourceException {
         try {
+            log.debug("Fetching data from URL: " + url);
 
             URL request = new URL(url);
             Scanner scanner = new Scanner(request.openStream());
@@ -70,7 +74,7 @@ public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
             JSONObject json = new JSONObject(response);
             scanner.close();
 
-            System.out.println("Fetching JSON data for: " + url);
+            log.debug("JSON: " + json);
 
             return builder.setTitle(json.getString("Title"))
                     .setYear(json.getString("Year"))
@@ -79,7 +83,8 @@ public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
                     .setRating(json.getString("imdbRating"));
 
         } catch (IOException | JSONException e) {
-            e.printStackTrace();
+            log.info("Exception during OMDB data retrieving");
+            log.debug(e.getMessage());
             throw new InvalidDataSourceException(url);
         }
     }

@@ -22,5 +22,5 @@ var getMovies = function() {
 } ;
 getMovies()
 
-$.post("/api/dis/",{ pid: 'cekin@vp.pl', mid: "tt4550098"});
+// $.post("/api/dis/",{ pid: 'cekin@vp.pl', mid: "tt4550098"});
 

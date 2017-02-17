@@ -24,7 +24,7 @@ public class DataAccessObject<T> {
     }
     /**
      * Saves or update record of given entity represented by given object.
-     * @param object
+     * @param object to save
      */
     public void saveOrUpdate(T object) {
         Session session = factory.openSession();
@@ -38,7 +38,7 @@ public class DataAccessObject<T> {
 
         session.getTransaction().commit();
         session.close();
-    };
+    }
 
     /**
      * Removes records of entity, represented by given object class,  from database
@@ -56,7 +56,7 @@ public class DataAccessObject<T> {
 
         session.getTransaction().commit();
         session.close();
-    };
+    }
 
     /**
      * Retrieve object of given id from database.
@@ -68,7 +68,7 @@ public class DataAccessObject<T> {
         Session session = factory.openSession();
 
         try {
-            object = (T) session.find(typeParameterClass, id);
+            object = session.find(typeParameterClass, id);
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }
@@ -85,7 +85,7 @@ public class DataAccessObject<T> {
      */
     public List<T> query(String sqlQuery) {
         Session session = factory.openSession();
-        TypedQuery query = session.createQuery(sqlQuery,typeParameterClass);
+        TypedQuery<T> query = session.createQuery(sqlQuery,typeParameterClass);
         List<T> result = query.getResultList();
         session.close();
         return result;

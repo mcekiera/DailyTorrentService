@@ -1,5 +1,6 @@
 package pl.mcekiera.service.DataSource;
 
+import org.apache.log4j.Logger;
 import pl.mcekiera.model.Movie;
 import pl.mcekiera.model.MovieBuilder;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TorrentMovieDataSource implements DataSource<Movie> {
+    private static Logger log = Logger.getLogger(TorrentMovieDataSource.class);
     private final String rssUrl = "https://yourbittorrent.com/movies/rss.xml";
     private final String jsonUrl = "http://www.omdbapi.com/";
 
@@ -21,18 +23,22 @@ public class TorrentMovieDataSource implements DataSource<Movie> {
         List<MovieBuilder> temp = new ArrayList<>();
 
 
-        System.out.print("Open service");
+        log.info("RSS data processing from URL: " + rssUrl);
         YourBittorentRssDataSource rssDataSource = new YourBittorentRssDataSource(rssUrl);
-        System.out.print("RSS retrieved");
+
         try {
             temp = rssDataSource.getData();
         } catch (InvalidDataSourceException e) {
-            e.printStackTrace();
+            log.info("Invalid data source exception");
+            log.debug(e.getMessage());
         }
+        log.info("RSS data collection succeeded");
+        log.info("OMDB data processing form URL: " + jsonUrl);
+
         OmdbJsonDataSource jsonDataSource = new OmdbJsonDataSource(jsonUrl,temp);
-        System.out.print("JSON retrieved");
 
-
+        log.info("OMDB data collection succeeded");
+        log.info("Creating movie objects");
         jsonDataSource.getData().forEach(item -> movies.add(item.build()));
 
         return movies;

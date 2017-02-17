@@ -1,5 +1,6 @@
 package pl.mcekiera.service;
 
+import org.apache.log4j.Logger;
 import pl.mcekiera.model.Movie;
 import pl.mcekiera.model.Profile;
 import pl.mcekiera.respository.DataAccessObject;
@@ -7,16 +8,22 @@ import pl.mcekiera.respository.DataAccessObject;
 import java.util.List;
 
 public class TorrentRecommendationsService {
+    private static Logger log = Logger.getLogger(TorrentRecommendationsService.class);
 
     public List<Movie> getRecommendedMovies(String profileId) {
+        log.info("Recommendations service: start");
+
         DataAccessObject<Profile> profileDAO = new DataAccessObject<>(Profile.class);
         DataAccessObject<Movie> moviesDAO = new DataAccessObject<>(Movie.class);
-        Profile user = profileDAO.find(profileId);
 
-        return moviesDAO.query(createQuery(user, user.getMinRating(),user.getWhitelist(),user.getBlacklist()));
+        Profile user = profileDAO.find(profileId);
+        String query = createQuery(user);
+
+        log.info("Query content: " + query);
+        return moviesDAO.query(query);
     }
 
-    private String createQuery(Profile user, double userRating, String userWhitelist, String userBlacklist) {
+    private String createQuery(Profile user) {
         String whitelist = createAlternativesChain(user.getWhitelist(), "LIKE");
         String blacklist = createAlternativesChain(user.getBlacklist(), "NOT LIKE");
 

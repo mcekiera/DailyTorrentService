@@ -1,5 +1,6 @@
 package pl.mcekiera.service.DataSource;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -12,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
+    private static Logger log = Logger.getLogger(YourBittorentRssDataSource.class);
     private final String source;
-    private boolean valid;
 
     public YourBittorentRssDataSource(String url) {
         this.source = url;

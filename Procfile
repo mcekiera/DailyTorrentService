@@ -1,1 +1,1 @@
-web: java -jar target\DailyTorrentService-1.0-SNAPSHOT.jar
+web: java -jar target\DailyTorrentService-1.0-SNAPSOT.jar
