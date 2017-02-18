@@ -8,67 +8,86 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"  rel="stylesheet" >
 </head>
 <body>
-    <form class="form">
-        <div class="form-group">
-            <label for="emailInput">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <label for="ratingInput">Minimal accepted movie IMDB rating</label>
-            <input type="number" class="form-control" id="ratingInput" step="0.1" min="0" max="10">
-        </div>
+    <div class="container">
+        <h1>YourTorrent recommendation service registration form</h1>
+        <form>
+            <div class="form-group">
+                <label for="emailInput">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="ratingInput">Minimal accepted movie IMDB rating</label>
+                <input type="number" class="form-control" id="ratingInput" step="0.1" min="0" max="10">
+            </div>
 
-        <div class="form-group">
-            <label>Whitelist of genres:</label>
-            <label><input type="checkbox" value="Action" name="favAction">Action</label>
-            <label><input type="checkbox" value="Adventure" name="favAdventure">Adventure</label>
-            <label><input type="checkbox" value="Animation" name="favAnimation">Animation</label>
-            <label><input type="checkbox" value="Biography" name="favBiography">Biography</label>
-            <label><input type="checkbox" value="Comedy" name="favComedy">Comedy</label>
-            <label><input type="checkbox" value="Drama" name="favDrama">Drama</label>
-            <label><input type="checkbox" value="Family" name="favFamily">Family</label>
-            <label><input type="checkbox" value="Fantasy" name="favFantasy">Fantasy</label>
-            <label><input type="checkbox" value="Film-Noir" name="favFilm-Noir">Film-Noir</label>
-            <label><input type="checkbox" value="History" name="favHistory">History</label>
-            <label><input type="checkbox" value="Horror" name="favHorror">Horror</label>
-            <label><input type="checkbox" value="Music" name="favMusic">Music</label>
-            <label><input type="checkbox" value="Musical" name="favMusical">Musical</label>
-            <label><input type="checkbox" value="Mystery" name="favMystery">Mystery</label>
-            <label><input type="checkbox" value="Romance" name="favRomance">Romance</label>
-            <label><input type="checkbox" value="Sci-Fi" name="favSci-Fi">Sci-Fi</label>
-            <label><input type="checkbox" value="Sport" name="favSport">Sport</label>
-            <label><input type="checkbox" value="Thriller" name="favThriller">Thriller</label>
-            <label><input type="checkbox" value="War" name="favWar">War</label>
-            <label><input type="checkbox" value="Western" name="favWestern">Western</label>
-        </div>
+            <div class="form-group row">
+                <h4>Whitelist of genres:</h4>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="checkbox" value="Action">Action</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Adventure">Adventure</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Animation">Animation</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Biography">Biography</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Comedy">Comedy</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="checkbox" value="Drama">Drama</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Family">Family</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Fantasy">Fantasy</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Film-Noir">Film-Noir</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="History">History</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="checkbox" value="Horror">Horror</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Music">Music</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Musical">Musical</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Mystery">Mystery</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Romance">Romance</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="checkbox" value="Sci-Fi">Sci-Fi</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Sport">Sport</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Thriller">Thriller</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="War">War</label>
+                    <label class="whitelist form-control"><input type="checkbox" value="Western">Western</label>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label>Blacklist of genres:</label>
-            <label><input type="checkbox" value="Action" name="favAction">Action</label>
-            <label><input type="checkbox" value="Adventure" name="favAdventure">Adventure</label>
-            <label><input type="checkbox" value="Animation" name="favAnimation">Animation</label>
-            <label><input type="checkbox" value="Biography" name="favBiography">Biography</label>
-            <label><input type="checkbox" value="Comedy" name="favComedy">Comedy</label>
-            <label><input type="checkbox" value="Drama" name="favDrama">Drama</label>
-            <label><input type="checkbox" value="Family" name="favFamily">Family</label>
-            <label><input type="checkbox" value="Fantasy" name="favFantasy">Fantasy</label>
-            <label><input type="checkbox" value="Film-Noir" name="favFilm-Noir">Film-Noir</label>
-            <label><input type="checkbox" value="History" name="favHistory">History</label>
-            <label><input type="checkbox" value="Horror" name="favHorror">Horror</label>
-            <label><input type="checkbox" value="Music" name="favMusic">Music</label>
-            <label><input type="checkbox" value="Musical" name="favMusical">Musical</label>
-            <label><input type="checkbox" value="Mystery" name="favMystery">Mystery</label>
-            <label><input type="checkbox" value="Romance" name="favRomance">Romance</label>
-            <label><input type="checkbox" value="Sci-Fi" name="favSci-Fi">Sci-Fi</label>
-            <label><input type="checkbox" value="Sport" name="favSport">Sport</label>
-            <label><input type="checkbox" value="Thriller" name="favThriller">Thriller</label>
-            <label><input type="checkbox" value="War" name="favWar">War</label>
-            <label><input type="checkbox" value="Western" name="favWestern">Western</label>
-        </div>
+            <div class="form-group row">
+                <h4>Blacklist of genres:</h4>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="checkbox" value="Action">Action</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Adventure">Adventure</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Animation">Animation</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Biography">Biography</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Comedy">Comedy</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="checkbox" value="Drama">Drama</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Family">Family</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Fantasy">Fantasy</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Film-Noir">Film-Noir</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="History">History</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="checkbox" value="Horror">Horror</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Music">Music</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Musical">Musical</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Mystery">Mystery</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Romance">Romance</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="checkbox" value="Sci-Fi">Sci-Fi</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Sport">Sport</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Thriller">Thriller</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="War">War</label>
+                    <label class="blacklist form-control"><input type="checkbox" value="Western">Western</label>
+                </div>
+            </div>
 
-        <button type="submit">Register</button>
-        <button>Main</button>
+            <button type="submit" class="btn btn-default">Register</button>
+            <button class="btn btn-default">Main</button>
 
-    </form>
+        </form>
+    </div>
 </body>
 </html>
