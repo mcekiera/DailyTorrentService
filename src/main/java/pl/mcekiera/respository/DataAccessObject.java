@@ -22,7 +22,6 @@ public class DataAccessObject<T> {
     private final Class<T> typeParameterClass;
 
     public DataAccessObject(Class<T> typeParameterClass) {
-        log.info("Creating DataAccessObject for for " + typeParameterClass.toString());
         this.typeParameterClass = typeParameterClass;
     }
     /**
@@ -33,7 +32,7 @@ public class DataAccessObject<T> {
         Session session = factory.openSession();
         session.beginTransaction();
 
-        log.info("Save or update: " + object.toString());
+        log.info("Save or update object: " + object.toString());
         try {
             session.saveOrUpdate(object);
         } catch (HibernateException ex) {
@@ -52,7 +51,7 @@ public class DataAccessObject<T> {
         Session session = factory.openSession();
         session.beginTransaction();
 
-        log.info("Delete: " + object.toString());
+        log.info("Delete object: " + object.toString());
         try {
             session.delete(object);
         } catch (HibernateException ex) {
@@ -72,7 +71,7 @@ public class DataAccessObject<T> {
         T object = null;
         Session session = factory.openSession();
 
-        log.info("Find: " + id);
+        log.info("Find object: " + id);
         try {
             object = session.find(typeParameterClass, id);
         } catch (HibernateException ex) {
@@ -90,7 +89,7 @@ public class DataAccessObject<T> {
      * generic type, in other situation return just Objects list.
      */
     public List<T> query(String sqlQuery) {
-        log.info("Query: " + sqlQuery);
+        log.info("Query processed: " + sqlQuery);
         Session session = factory.openSession();
         TypedQuery<T> query = session.createQuery(sqlQuery,typeParameterClass);
         List<T> result = query.getResultList();
