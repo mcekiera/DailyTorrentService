@@ -14,5 +14,10 @@ public class UpdateController {
     public void runService() {
         log.info("Scheduled service: run");
         service.runService();
+        System.exit(0);
+    }
+
+    public static void main(String[] args) {
+        new UpdateController().runService();
     }
 }
