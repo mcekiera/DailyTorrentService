@@ -1,1 +1,4 @@
 %JAVA_OPTS% -Dserver.port=$PORT
+
+C:\Users\Pacin\IdeaProjects\DailyTorrentService>heroku run java -cp target/class
+es/:target/dependency/*  pl.mcekiera.controller.UpdateController
