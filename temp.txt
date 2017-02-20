@@ -1,4 +1,3 @@
 web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/DailyTorrentService-1.0-SNAPSHOT.jar
 
-C:\Users\Pacin\IdeaProjects\DailyTorrentService>heroku run java -cp target/class
-es/:target/dependency/*  pl.mcekiera.controller.UpdateController
+C:\Users\Pacin\IdeaProjects\DailyTorrentService>heroku run java -cp target/classes/:target/dependency/*  pl.mcekiera.controller.UpdateController
