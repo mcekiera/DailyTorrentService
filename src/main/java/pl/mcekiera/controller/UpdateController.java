@@ -10,6 +10,9 @@ public class UpdateController {
     private static Logger log = Logger.getLogger(UpdateController.class);
     private DailyTorrentUpdate service = new DailyTorrentUpdate();
 
+    /**
+     * Schedule automatic execution of DailyTorrentUpdate service on given time.
+     */
     @Scheduled(cron = "0 0 10,22 * * *")
     public void runService() {
         log.info("Scheduled service: run");
@@ -17,6 +20,12 @@ public class UpdateController {
         System.exit(0);
     }
 
+
+    /**
+     * Additional main method for Heroku Scheduler service. As Heroku free option put app into sleep
+     * if not currently used, the additional service is available, to run scheduled task.
+     * @param args
+     */
     public static void main(String[] args) {
         new UpdateController().runService();
     }
