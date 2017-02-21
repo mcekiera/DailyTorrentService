@@ -22,5 +22,7 @@ var getMovies = function() {
 } ;
 getMovies()
 
-// $.post("/api/dis/",{ pid: 'cekin@vp.pl', mid: "tt4550098"});
+// $.post("/api/dis/",{ pid: 'cekin@vp.pl', mid: "tt6127254"});
+// $.post("/api/apr/",{ pid: 'cekin@vp.pl', mid: "tt6127254"});
+$.post("/api/profile/",{ id: 'test@test.com', rating: "9.0", whitelist: "Drama, Action", blacklist: "Western"});
 

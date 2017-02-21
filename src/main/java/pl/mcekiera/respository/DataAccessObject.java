@@ -85,13 +85,15 @@ public class DataAccessObject<T> {
     /**
      * Execute a query on database and return a list of objects.
      * @param sqlQuery query to execute.
+     * @param limit limit of results objects
      * @return List of objects, if query id properly designed, should return object of DataAccesObject's
      * generic type, in other situation return just Objects list.
      */
-    public List<T> query(String sqlQuery) {
+    public List<T> query(String sqlQuery, int limit) {
         log.info("Query processed: " + sqlQuery);
         Session session = factory.openSession();
         TypedQuery<T> query = session.createQuery(sqlQuery,typeParameterClass);
+        query.setMaxResults(limit);
         List<T> result = query.getResultList();
         session.close();
         return result;

@@ -90,7 +90,7 @@ public class DAOTest {
             e.printStackTrace();
         }
 
-        Movie movie = new Movie(title,year,rating,genre,imdbId,torrenName,link,publicationDate);
+        Movie movie = new Movie(title,year,rating,genre,imdbId,torrenName,link,publicationDate,0,0);
 
         DataAccessObject<Movie> point = new DataAccessObject<>(Movie.class);
 

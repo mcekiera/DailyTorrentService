@@ -44,10 +44,18 @@ public class Movie implements Serializable{
      * ID of movie in IMDB.
      */
     private String imdbId;
+    /**
+     * Number of dismiss recommendation requests for this movie
+     */
+    private int dismiss;
+    /**
+     * Number of approve recommendation requests for this movie
+     */
+    private int approve;
 
     public Movie() {}
 
-    public Movie(String title, int year, double rating, String genre, String imdbId, String torrentName, String torrentUrl, Date publicationDate) {
+    public Movie(String title, int year, double rating, String genre, String imdbId, String torrentName, String torrentUrl, Date publicationDate, int dismiss, int approve) {
         this.title = title;
         this.torrentName = torrentName;
         this.year = year;
@@ -56,6 +64,8 @@ public class Movie implements Serializable{
         this.torrentUrl = torrentUrl;
         this.publicationDate = publicationDate;
         this.imdbId = imdbId;
+        this.dismiss = dismiss;
+        this.approve = approve;
     }
 
     @Basic
@@ -64,7 +74,7 @@ public class Movie implements Serializable{
         return title;
     }
 
-    public void setTitle(String title) {
+    private void setTitle(String title) {
         this.title = title;
     }
 
@@ -74,7 +84,7 @@ public class Movie implements Serializable{
         return year;
     }
 
-    public void setYear(int year) {
+    private void setYear(int year) {
         this.year = year;
     }
 
@@ -84,7 +94,7 @@ public class Movie implements Serializable{
         return rating;
     }
 
-    public void setRating(double rating) {
+    private void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -94,7 +104,7 @@ public class Movie implements Serializable{
         return genre;
     }
 
-    public void setGenre(String genre) {
+    private void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -124,7 +134,7 @@ public class Movie implements Serializable{
         return imdbId;
     }
 
-    public void setImdbId(String imdbId) {
+    private void setImdbId(String imdbId) {
         this.imdbId = imdbId;
     }
 
@@ -136,9 +146,46 @@ public class Movie implements Serializable{
         this.torrentName = torrentName;
     }
 
+    @Basic
+    @Column(name = "dismiss")
+    public int getDismiss() {
+        return dismiss;
+    }
+
+    private void setDismiss(int dismiss) {
+        this.dismiss = dismiss;
+    }
+
+    @Basic
+    @Column(name = "approve")
+    public int getApprove() {
+        return approve;
+    }
+
+    private void setApprove(int approve) {
+        this.approve = approve;
+    }
+
+    /**
+     * Increment the dismiss value by 1
+     */
+    public void dismiss() {
+        dismiss += 1;
+    }
+
+    /**
+     * Increment the approve value by 1.
+     */
+    public void approve() {
+        approve += 1;
+    }
+
+    /**
+     * @return title and IMDB id of the movie in format title(imdbId)
+     */
     @Override
     public String toString() {
-        return title + "-" + year + "-" + rating + "-" + genre + "-" + publicationDate;
+        return title + "(" + imdbId + ")";
     }
 
     /**
@@ -166,6 +213,10 @@ public class Movie implements Serializable{
         return result;
     }
 
+    /**
+     * Basic hashCode implementation.
+     * @return
+     */
     @Override
     public int hashCode() {
         return super.hashCode();

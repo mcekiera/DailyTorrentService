@@ -24,7 +24,7 @@ public class Dismiss {
         return id;
     }
 
-    public void setId(long id) {
+    private void setId(long id) {
         this.id = id;
     }
 
@@ -34,7 +34,7 @@ public class Dismiss {
         return imdbId;
     }
 
-    public void setImdbId(String imdbId) {
+    private void setImdbId(String imdbId) {
         this.imdbId = imdbId;
     }
 
@@ -44,7 +44,7 @@ public class Dismiss {
         return profileId;
     }
 
-    public void setProfileId(String profileId) {
+    private void setProfileId(String profileId) {
         this.profileId = profileId;
     }
 

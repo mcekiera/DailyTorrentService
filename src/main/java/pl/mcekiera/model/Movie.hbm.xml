@@ -12,5 +12,7 @@
         <property name="genre" column="genre"/>
         <property name="publicationDate"/>
         <property name="torrentName"/>
+        <property name="dismiss"/>
+        <property name="approve"/>
     </class>
 </hibernate-mapping>

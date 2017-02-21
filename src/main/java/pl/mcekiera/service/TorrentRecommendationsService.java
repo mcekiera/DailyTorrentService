@@ -11,16 +11,15 @@ public class TorrentRecommendationsService {
     private static Logger log = Logger.getLogger(TorrentRecommendationsService.class);
 
     public List<Movie> getRecommendedMovies(String profileId) {
-        log.info("Recommendations service: start");
+        log.info("Recommendations service for: " + profileId);
 
         DataAccessObject<Profile> profileDAO = new DataAccessObject<>(Profile.class);
         DataAccessObject<Movie> moviesDAO = new DataAccessObject<>(Movie.class);
 
         Profile user = profileDAO.find(profileId);
         String query = createQuery(user);
-
         log.info("Query content: " + query);
-        return moviesDAO.query(query);
+        return moviesDAO.query(query, 50);
     }
 
     private String createQuery(Profile user) {
@@ -44,11 +43,5 @@ public class TorrentRecommendationsService {
             result = result.replaceAll("(?i)\\s*or\\s$", ")");
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        TorrentRecommendationsService service = new TorrentRecommendationsService();
-
-        System.out.println(service.getRecommendedMovies("cekin@vp.pl"));
     }
 }

@@ -25,7 +25,7 @@ public class RequestController {
         return service.getRecommendedMovies(id);
     }
 
-    @RequestMapping(value = "/profiles/", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/profile/", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity addProfile(@RequestParam(value="id", defaultValue="") String id,
                            @RequestParam(value="rating") double rating,
@@ -46,13 +46,35 @@ public class RequestController {
 
         log.info("Dismiss request: " + profileId + "," + movieId);
         DataAccessObject<Dismiss> dao = new DataAccessObject<Dismiss>(Dismiss.class);
+        DataAccessObject<Movie> daom = new DataAccessObject<>(Movie.class);
         Dismiss dismiss = new Dismiss(profileId, movieId);
+        Movie movie = daom.find(movieId);
+        movie.dismiss();
         try {
+            daom.saveOrUpdate(movie);
             dao.saveOrUpdate(dismiss);
         } catch (AssertionFailure ex) {
             log.error(ex.getMessage());
             return new ResponseEntity<String>("Duplicate database entry",HttpStatus.BAD_REQUEST);
         }
         return  new ResponseEntity<String>(dismiss.toString(),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/api/apr/", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity approve(@RequestParam(value="pid", required = true) String profileId,
+                           @RequestParam(value="mid", required = true) String movieId){
+
+        log.info("Approve request: " + profileId + "," + movieId);
+        DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
+        Movie movie = dao.find(movieId);
+        movie.approve();
+        try {
+            dao.saveOrUpdate(movie);
+        } catch (AssertionFailure ex) {
+            log.error(ex.getMessage());
+            return new ResponseEntity<String>("Database error",HttpStatus.BAD_REQUEST);
+        }
+        return  new ResponseEntity<String>(movie.toString(),HttpStatus.OK);
     }
 }

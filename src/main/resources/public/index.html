@@ -10,41 +10,328 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <h1>Rekokokomendacjeeee</h1>
-    <div>
-        <h1>How it works?</h1>
-        <h2>Register</h2>
-        <h2>Fetch recommendations</h2>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand logo" href="#">
+                    <span class="logo--minor">d</span>
+                    <span class="logo--major">t</span>
+                </a>
+                <a class="navbar-brand" href="#">DailyTorrent</a>
+                <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">DB</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+    <div class="container-flex jumbotron--back">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>
+                    <span class="logo">
+                        <span class="logo--minor">d</span>
+                        <span class="logo--major">t</span>
+                    </span>
+                    DailyTorrent
+                </h1>
+                <p>Get (y)our daily movie recommendations!</p>
+            </div>
+            <p><i class="fa fa-sign-in" aria-hidden="true"></i>Register your email in our service!</p>
+            <p><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>Fetch you recommendations with our simple API!</p>
+        </div>
+    </div>
+    <div class="container">
+        <h1>YourTorrent recommendation service registration form</h1>
+        <form>
+            <div class="form-group has-success has-feedback">
+                <label for="emailInput">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Email">
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+
+            </div>
+            <div class="form-group has-success has-feedback">
+                <label for="ratingInput">Minimal accepted movie IMDB rating</label>
+                <input type="number" class="form-control" id="ratingInput" step="0.1" min="0" max="10">
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            </div>
+
+            <div class="form-group row">
+                <h4>Whitelist of genres:</h4>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="radio" name="Action" value="Action">Action</label>
+                    <label class="whitelist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label>
+                    <label class="whitelist form-control"><input type="radio" name="Animation" value="Animation">Animation</label>
+                    <label class="whitelist form-control"><input type="radio" name="Biography" value="Biography">Biography</label>
+                    <label class="whitelist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>
+                    <label class="whitelist form-control"><input type="radio" name="Family" value="Family">Family</label>
+                    <label class="whitelist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>
+                    <label class="whitelist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>
+                    <label class="whitelist form-control"><input type="radio" name="History" value="History">History</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>
+                    <label class="whitelist form-control"><input type="radio" name="Music" value="Music">Music</label>
+                    <label class="whitelist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>
+                    <label class="whitelist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>
+                    <label class="whitelist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="whitelist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>
+                    <label class="whitelist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>
+                    <label class="whitelist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>
+                    <label class="whitelist form-control"><input type="radio" name="War" value="War">War</label>
+                    <label class="whitelist form-control"><input type="radio" name="Western" value="Western">Western</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <h4>Blacklist of genres:</h4>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="radio" name="Action" value="Action">Action</label>
+                    <label class="blacklist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label>
+                    <label class="blacklist form-control"><input type="radio" name="Animation" value="Animation">Animation</label>
+                    <label class="blacklist form-control"><input type="radio" name="Biography" value="Biography">Biography</label>
+                    <label class="blacklist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>
+                    <label class="blacklist form-control"><input type="radio" name="Family" value="Family">Family</label>
+                    <label class="blacklist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>
+                    <label class="blacklist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>
+                    <label class="blacklist form-control"><input type="radio" name="History" value="History">History</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>
+                    <label class="blacklist form-control"><input type="radio" name="Music" value="Music">Music</label>
+                    <label class="blacklist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>
+                    <label class="blacklist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>
+                    <label class="blacklist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="blacklist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>
+                    <label class="blacklist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>
+                    <label class="blacklist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>
+                    <label class="blacklist form-control"><input type="radio" name="War" value="War">War</label>
+                    <label class="blacklist form-control"><input type="radio" name="Western" value="Western">Western</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-default">Register</button>
+
+        </form>
+
+    </div>
+    <div class="container">
 
         <h1>API</h1>
 
+        <h4>GET recommendation for profile</h4>
+        <p>Endpoint:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/api/ </a></p>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Data type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>Id of profile in email form</td>
+                    <td>String</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>POST dismiss or approve of recommendation</h4>
+        <p><a href="" target="_blank">Endpoint for dismiss: </a></p>
+        <p><a href="" target="_blank">Endpoint for approve: </a></p>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+                <th>Data type</th>
+            </tr>
+            <tr>
+                <td>pid</td>
+                <td>Id of profile in email form</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>mid</td>
+                <td>Movie id in form of IMDB id</td>
+                <td>String</td>
+            </tr>
+        </table>
+
+        <h4>POST dismiss or approve of recommendation</h4>
+        <p><a href="" target="_blank">Endpoint for dismiss: </a></p>
+        <p><a href="" target="_blank">Endpoint for approve: </a></p>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+                <th>Data type</th>
+            </tr>
+            <tr>
+                <td>pid</td>
+                <td>Id of profile in email form</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>mid</td>
+                <td>Movie id in form of IMDB id</td>
+                <td>String</td>
+            </tr>
+        </table>
+
+        <h4>POST add new profile</h4>
+        <p><a href="" target="_blank">Endpoint: </a></p>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+                <th>Data type</th>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>Id of profile in email form</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>rating</td>
+                <td>Minimal movie rating for recommendations</td>
+                <td>Float</td>
+            </tr>
+            <tr>
+                <td>whitelist</td>
+                <td>List of favourite genres</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>blacklist</td>
+                <td>List of disliked genres</td>
+                <td>String</td>
+            </tr>
+        </table>
+
     </div>
-    <div id="main">
-
-
-
+    <div class="container">
+        <h1>Our database:</h1>
+        <p>Our database contains following columns:</p>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <tr>
+                <th>Column name</th>
+                <th>Description</th>
+                <th>Data type</th>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>Title of movie</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>link</td>
+                <td>URL to the newest torrent with given movie</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>year</td>
+                <td>Movie release year</td>
+                <td>Integer</td>
+            </tr>
+            <tr>
+                <td>rating</td>
+                <td>Rating of movie in IMDB</td>
+                <td>Float</td>
+            </tr>
+            <tr>
+                <td>publicationDate</td>
+                <td>Date of given torrent publication</td>
+                <td>Date</td>
+            </tr>
+            <tr>
+                <td>genre</td>
+                <td>List of genres the movie is classified in</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>imdbId</td>
+                <td>Id of movie in IMDB</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>torrentName</td>
+                <td>Name of newest torrent file with given movie</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>dismiss</td>
+                <td>Number of dismiss calls on given recommendation</td>
+                <td>Integer</td>
+            </tr>
+            <tr>
+                <td>approve</td>
+                <td>Number of approve calls on given recommendation</td>
+                <td>Integer</td>
+            </tr>
+        </table>
+        <h6>Take a look on the latest recommendations from our DB:</h6>
+        <div id="main"></div>
     </div>
 
     <script id="template" type="text/ractive">
-        <table>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <thead>
             <tr>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Genre</th>
-                <th>Torrent</th>
+                <th>IMDB</th>
+                <th>YourTorrent</th>
                 <th>IMDB rating</th>
             </tr>
+            </thead>
+            <tbody>
             {{#each movies}}
             <tr>
-                <td><a href="http://www.imdb.com/title/{{imdbId}}" target="_blank">{{title}}</a></td>
+                <td>{{title}}</td>
                 <td>{{year}}</td>
                 <td>{{genre}}</td>
                 <td>
-                    <a href="https://yourbittorrent.com/?c=1&q={{formatToQuery(title)}}+{{year}}" target="_blank">{{torrentName}}</a>
+                    <a href="http://www.imdb.com/title/{{imdbId}}" target="_blank">
+                        <i class="fa fa-imdb" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://yourbittorrent.com/?c=1&q={{formatToQuery(title)}}+{{year}}" target="_blank">
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
                 </td>
                 <td>{{rating}}</td>
             </tr>
             {{/each}}
+            </tbody>
         </table>
     </script>
 
