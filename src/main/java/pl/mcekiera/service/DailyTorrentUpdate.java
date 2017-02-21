@@ -11,14 +11,22 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+/**
+ * Service, which fetch data from YourBittorrent RSS file, combine it with data from OMDB to create
+ * list of Movie object, representing data about movie, and save it into database.
+ */
 public class DailyTorrentUpdate {
     private static Logger log = Logger.getLogger(DailyTorrentUpdate.class);
     private DataSource<Movie> source = new TorrentMovieDataSource();
 
+    /**
+     * Initialize process of data collecting and processing.
+     */
     public void runService() {
         Locale.setDefault(Locale.ENGLISH);
         try {
             log.info("Update service: start");
+
             Set<Movie> movies = new HashSet<>(source.getData());
             DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
             movies.forEach(dao::saveOrUpdate);
@@ -29,9 +37,5 @@ public class DailyTorrentUpdate {
             log.info("Invalid data source exception");
             log.error(e.getMessage());
         }
-    }
-
-    public static void main(String[] args) {
-        new DailyTorrentUpdate().runService();
     }
 }

@@ -12,8 +12,17 @@ import org.hibernate.service.ServiceRegistry;
  * Helper class for Hibernate service.
  */
 public class HibernateUtility {
+    /**
+     * Logging service
+     */
     private static Logger log = Logger.getLogger(HibernateUtility.class);
+    /**
+     * Single instance of SessionFactory for database connection
+     */
     private static SessionFactory sessionFactory;
+    /**
+     * Hibernate configuration class
+     */
     private static ServiceRegistry serviceRegistry;
 
     static {
