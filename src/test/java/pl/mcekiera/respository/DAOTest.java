@@ -1,10 +1,9 @@
-package pl.mcekiera.service.respository;
+package pl.mcekiera.respository;
 
 import org.junit.Before;
 import org.junit.Test;
 import pl.mcekiera.model.Movie;
 import pl.mcekiera.model.Profile;
-import pl.mcekiera.respository.DataAccessObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

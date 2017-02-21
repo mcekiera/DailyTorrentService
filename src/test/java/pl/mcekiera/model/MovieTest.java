@@ -1,8 +1,7 @@
-package pl.mcekiera.service.model;
+package pl.mcekiera.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import pl.mcekiera.model.Movie;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

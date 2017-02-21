@@ -1,7 +1,7 @@
-package pl.mcekiera.service.model;
+package pl.mcekiera.model;
 
 import org.junit.Test;
-import pl.mcekiera.model.Dismiss;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 

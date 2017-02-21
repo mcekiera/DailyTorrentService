@@ -1,9 +1,7 @@
-package pl.mcekiera.service.model;
+package pl.mcekiera.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import pl.mcekiera.model.MovieBuilder;
-import pl.mcekiera.model.Profile;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

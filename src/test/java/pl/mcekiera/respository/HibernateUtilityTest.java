@@ -1,7 +1,7 @@
-package pl.mcekiera.service.respository;
+package pl.mcekiera.respository;
 
 import org.junit.Test;
-import pl.mcekiera.respository.HibernateUtility;
+
 import static org.junit.Assert.assertEquals;
 
 public class HibernateUtilityTest {
