@@ -35,7 +35,7 @@ public class DailyTorrentUpdateService implements UpdateService {
             DataAccessObject<Movie> dao = new DataAccessObject<>(Movie.class);
             movies.forEach(dao::saveOrUpdate);
 
-            log.info("Update recommendationService: done");
+            log.info("Update recommendationService: done for " + movies.size());
         }
         catch (InvalidDataSourceException e) {
             log.info("Invalid data source exception");

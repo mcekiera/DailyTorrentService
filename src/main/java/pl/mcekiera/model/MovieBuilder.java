@@ -1,5 +1,7 @@
 package pl.mcekiera.model;
 
+import org.apache.log4j.Logger;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +13,7 @@ import java.util.Date;
  * Movie object creation.
  */
 public class MovieBuilder {
+    private static Logger log = Logger.getLogger(MovieBuilder.class);
     private String title = "";
     private String torrentName ="";
     private int year = 0;
@@ -27,6 +30,7 @@ public class MovieBuilder {
      * @return new Movie object with provided data.
      */
     public Movie build() {
+        log.info("Creating new Movie object: " + title);
        return new Movie(title, year, rating, genre, imdbId, torrentName, torrentUrl, publication, dismiss, approve);
     }
 
@@ -133,7 +137,7 @@ public class MovieBuilder {
         try {
             this.publication =  format.parse(publication.trim());
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return this;
     }

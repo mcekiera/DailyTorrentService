@@ -1,14 +1,10 @@
 package pl.mcekiera.service.DataSource;
 
 import org.apache.log4j.Logger;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import pl.mcekiera.model.MovieBuilder;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +13,10 @@ import java.util.List;
  */
 class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
     private static Logger log = Logger.getLogger(YourBittorentRssDataSource.class);
-    private final String source;
+    private Document xml;
 
-    YourBittorentRssDataSource(String url) {
-        log.info("Parsing RSS source: " + url);
-        this.source = url;
+    YourBittorentRssDataSource(Document xml) {
+        this.xml = xml;
     }
 
     /**
@@ -31,34 +26,7 @@ class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
      */
     @Override
     public List<MovieBuilder> getData() throws InvalidDataSourceException {
-        try {
-            Document xmlDoc = fetchDocument(source);
-            System.out.println("Fetching XML data from: " + source);
-            return parseData(xmlDoc);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            throw new InvalidDataSourceException(source);
-        }
-    }
-
-    /**
-     * Retrieve XML document from given URL
-     * @param source String with URL
-     * @return XML Document
-     * @throws IOException
-     */
-    private Document fetchDocument(String source) throws IOException {
-        Document xmlDoc = null;
-        try {
-            xmlDoc = Jsoup.connect(source).get();
-        } catch (MalformedURLException | IllegalArgumentException ex) {
-            log.error(ex.getMessage());
-//            TODO: implementation only for testing!
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(source).getFile());
-            xmlDoc = Jsoup.parse(file, "UTF-8");
-        }
-        return xmlDoc;
+        return parseData(xml);
     }
 
     /**

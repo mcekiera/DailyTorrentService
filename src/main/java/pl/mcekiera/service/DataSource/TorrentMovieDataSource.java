@@ -3,6 +3,8 @@ package pl.mcekiera.service.DataSource;
 import org.apache.log4j.Logger;
 import pl.mcekiera.model.Movie;
 import pl.mcekiera.model.MovieBuilder;
+import pl.mcekiera.service.XMLSource.OnlineXmlSource;
+import pl.mcekiera.service.XMLSource.XmlSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,8 @@ public class TorrentMovieDataSource implements DataSource<Movie> {
 
 
         log.info("RSS data processing from URL: " + rssUrl);
-        YourBittorentRssDataSource rssDataSource = new YourBittorentRssDataSource(rssUrl);
+        XmlSource source = new OnlineXmlSource();
+        YourBittorentRssDataSource rssDataSource = new YourBittorentRssDataSource(source.getDocument(rssUrl));
 
         try {
             temp = rssDataSource.getData();
