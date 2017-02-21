@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Parse data from RSS XML source into list of MovieBuilders with partly inserted data.
  */
-class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
+public class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
     private static Logger log = Logger.getLogger(YourBittorentRssDataSource.class);
     private Document xml;
 
-    YourBittorentRssDataSource(Document xml) {
+    public YourBittorentRssDataSource(Document xml) {
         this.xml = xml;
     }
 
@@ -52,10 +52,12 @@ class YourBittorentRssDataSource implements DataSource<MovieBuilder> {
      * @return MovieBuilder
      */
     private MovieBuilder createMovieBuilder(Elements list, int i) {
+        System.out.println(list.get(i));
         String title = list.get(i).getElementsByTag("title").text();
         String link = list.get(i).getElementsByTag("link").text();
         String date = list.get(i).getElementsByTag("pubDate").text();
         return new MovieBuilder().setTorrentName(title).setTorrentUrl(link).setPublication(date);
     }
+
 
 }

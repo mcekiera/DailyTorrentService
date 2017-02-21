@@ -16,7 +16,7 @@ public class OnlineXmlSource implements XmlSource{
             xmlDoc = Jsoup.connect(source).get();
         } catch (IllegalArgumentException | IOException ex) {
             log.error(ex.getMessage());
-            return null;
+
         }
         return xmlDoc;
     }

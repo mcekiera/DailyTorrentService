@@ -18,7 +18,7 @@ class OmdbJsonDataSource implements DataSource<MovieBuilder> {
     private final String source;
     private List<MovieBuilder> data;
     private final Pattern pattern;
-
+    //TODO: class for refactoring: names, extracting title processing method
     OmdbJsonDataSource(String url, List<MovieBuilder> list) {
         log.info("Retrieving movie data from URL: " + url);
         this.source = url;
