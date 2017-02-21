@@ -54,20 +54,20 @@ public class MovieBuilderTest {
     }
 
     @Test
-    public void setRatingWithInvalidInput() {
-        builder.setRating("aaa");
-        assertEquals("Should return 0.0 if input is invalid", 0.0, builder.getRating(),0.1);
-    }
-
-    @Test
     public void setRatingWithProperInput() {
         builder.setRating("2.0");
         assertEquals("Should return double value", 2.0, builder.getRating(),0.1);
     }
 
     @Test
-    public void setValidPublication() {
-        String date = "Sun, 05 Feb 2017 21:41:02 +0000";
+    public void setRatingWithInvalidInput() {
+        builder.setRating("aaa");
+        assertEquals("Should return 0.0 if input is invalid", 0.0, builder.getRating(),0.1);
+    }
+
+    @Test
+    public void setPublication() {
+        String date = "Sun, 05 Feb 2017 21:41:02 +0100";
         LocalDateTime ldt = LocalDateTime.of(2017, 2, 5, 21, 41, 2);
         ZonedDateTime zdt = ldt.atZone(ZoneId.systemDefault());
         builder.setPublication(date);
@@ -106,5 +106,11 @@ public class MovieBuilderTest {
                 .setGenre(genre).setImdbId(imdbId).setTorrentName(torrenName).setTorrentUrl(link).setPublication(date);
 
         assertEquals("Should return equal Movie object", movie,builder.build());
+    }
+
+    @Test
+    public void customToString() {
+        String result = ";;0;0.0;;;Thu Jan 01 01:00:00 CET 1970;;0;0";
+        assertEquals("Should returns string with all fields values delimited by semicolon", builder.toString(),result);
     }
 }

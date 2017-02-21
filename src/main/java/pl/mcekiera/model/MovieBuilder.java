@@ -129,7 +129,7 @@ public class MovieBuilder {
      * @return this object, for method chaining
      */
     public MovieBuilder setPublication(String publication) {
-        SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zz");
+        SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
         try {
             this.publication =  format.parse(publication.trim());
         } catch (ParseException e) {
