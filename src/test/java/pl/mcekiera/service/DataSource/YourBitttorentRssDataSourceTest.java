@@ -21,6 +21,7 @@ public class YourBitttorentRssDataSourceTest {
         LocalXmlSource source = new LocalXmlSource();
         String path = getClass().getClassLoader().getResource("test.xml").getPath();
         Document document = new Document("");
+
         try {
             document = Jsoup.parse(new File(path),"UTF-8");
         } catch (IOException e) {
