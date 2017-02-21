@@ -5,7 +5,7 @@
 
     <bean name="torrentMovieDataSource" class="pl.mcekiera.service.DataSource.TorrentMovieDataSource"/>
 
-    <bean name="updateService" class="pl.mcekiera.service.DailyTorrentUpdate">
+    <bean name="updateService" class="pl.mcekiera.service.DailyTorrentUpdateService">
         <property name="movieDataSource" ref="torrentMovieDataSource"/>
     </bean>
 

@@ -7,11 +7,12 @@ import pl.mcekiera.respository.DataAccessObject;
 
 import java.util.List;
 
-public class TorrentRecommendationsService {
-    private static Logger log = Logger.getLogger(TorrentRecommendationsService.class);
+public class TorrentRecommendationService implements RecommendationService<Movie>{
+    private static Logger log = Logger.getLogger(TorrentRecommendationService.class);
 
-    public List<Movie> getRecommendedMovies(String profileId) {
-        log.info("Recommendations service for: " + profileId);
+    @Override
+    public List<Movie> getRecommendations(String profileId) {
+        log.info("Recommendations recommendationService for: " + profileId);
 
         DataAccessObject<Profile> profileDAO = new DataAccessObject<>(Profile.class);
         DataAccessObject<Movie> moviesDAO = new DataAccessObject<>(Movie.class);

@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import pl.mcekiera.service.UpdateService;
 
 @Controller
 public class UpdateController {

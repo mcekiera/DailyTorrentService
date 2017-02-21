@@ -13,13 +13,13 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class OmdbJsonDataSource implements DataSource<MovieBuilder> {
+class OmdbJsonDataSource implements DataSource<MovieBuilder> {
     private static Logger log = Logger.getLogger(OmdbJsonDataSource.class);
     private final String source;
     private List<MovieBuilder> data;
     private final Pattern pattern;
 
-    public OmdbJsonDataSource(String url, List<MovieBuilder> list) {
+    OmdbJsonDataSource(String url, List<MovieBuilder> list) {
         log.info("Retrieving movie data from URL: " + url);
         this.source = url;
         this.data = list;

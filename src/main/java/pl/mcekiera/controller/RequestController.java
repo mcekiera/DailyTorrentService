@@ -9,7 +9,8 @@ import pl.mcekiera.model.Dismiss;
 import pl.mcekiera.model.Movie;
 import pl.mcekiera.model.Profile;
 import pl.mcekiera.respository.DataAccessObject;
-import pl.mcekiera.service.TorrentRecommendationsService;
+import pl.mcekiera.service.RecommendationService;
+import pl.mcekiera.service.TorrentRecommendationService;
 
 import java.util.List;
 
@@ -19,7 +20,10 @@ import java.util.List;
 @RestController
 public class RequestController {
     private static Logger log = Logger.getLogger(RequestController.class);
-    public static TorrentRecommendationsService service = new TorrentRecommendationsService();
+    /**
+     * Provides recommendations in response to input.
+     */
+    private static RecommendationService recommendationService = new TorrentRecommendationService();
 
     /**
      * Provides data with movies recommended to given profile.
@@ -30,7 +34,7 @@ public class RequestController {
     public @ResponseBody
     List<Movie> getRecommendations(@RequestParam(value="id", defaultValue="default") String id){
         log.info("Get recommendations request for: " + id);
-        return service.getRecommendedMovies(id);
+        return recommendationService.getRecommendations(id);
     }
 
     /**
