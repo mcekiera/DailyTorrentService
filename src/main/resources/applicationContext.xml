@@ -3,5 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="torrentMovieDataSource" class="pl.mcekiera.service.DataSource.TorrentMovieDataSource"></bean>
+    <bean name="torrentMovieDataSource" class="pl.mcekiera.service.DataSource.TorrentMovieDataSource"/>
+
+    <bean name="updateService" class="pl.mcekiera.service.DailyTorrentUpdate">
+        <property name="movieDataSource" ref="torrentMovieDataSource"/>
+    </bean>
+
+    <bean name="updateController" class="pl.mcekiera.controller.UpdateController">
+        <property name="updateService" ref="updateService"/>
+    </bean>
 </beans>
