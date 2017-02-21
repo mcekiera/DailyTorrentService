@@ -68,76 +68,126 @@ public class Movie implements Serializable{
         this.approve = approve;
     }
 
+    /**
+     * @return title value
+     */
     @Basic
     @Column(name = "title")
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Only for hibernate use
+     * @param title value
+     */
     private void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return year value
+     */
     @Basic
     @Column(name = "year")
     public int getYear() {
         return year;
     }
 
+    /**
+     * Only for hibernate use
+     * @param year value
+     */
     private void setYear(int year) {
         this.year = year;
     }
 
+    /**
+     * @return rating value
+     */
     @Basic
     @Column(name = "rating")
     public double getRating() {
         return rating;
     }
 
+    /**
+     * Only for hibernate use
+     * @param rating value
+     */
     private void setRating(double rating) {
         this.rating = rating;
     }
 
+    /**
+     * @return genre value
+     */
     @Basic
     @Column(name = "genre")
     public String getGenre() {
         return genre;
     }
 
+    /**
+     * Only for hibernate use
+     * @param genre value
+     */
     private void setGenre(String genre) {
         this.genre = genre;
     }
 
+    /**
+     * @return torrent url value
+     */
     @Basic
     @Column(name = "link")
     public String getTorrentUrl() {
         return torrentUrl;
     }
 
+    /**
+     * @param torrentUrl value for torrentUrl field
+     */
     public void setTorrentUrl(String torrentUrl) {
         this.torrentUrl = torrentUrl;
     }
 
+    /**
+     * @return publication date of torrent value
+     */
     @Basic
     @Column(name = "publicationDate")
     public Date getPublicationDate() {
         return publicationDate;
     }
 
+    /**
+     * @param publicationDate value for publicationDate field
+     */
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
     }
 
+    /**
+     * @return imdbId value
+     */
     @Id
     @Column(name = "imdbId")
     public String getImdbId() {
         return imdbId;
     }
 
+    /**
+     * Only for hibernate use
+     * @param imdbId value
+     */
     private void setImdbId(String imdbId) {
         this.imdbId = imdbId;
     }
 
+    /**
+     * @return torrent file name value
+     */
     @Basic
     @Column(name = "torrentName")
     public String getTorrentName() { return torrentName; }
@@ -146,22 +196,36 @@ public class Movie implements Serializable{
         this.torrentName = torrentName;
     }
 
+    /**
+     * @return dismiss requests number
+     */
     @Basic
     @Column(name = "dismiss")
     public int getDismiss() {
         return dismiss;
     }
 
+    /**
+     * Only for hibernate use
+     * @param dismiss value
+     */
     private void setDismiss(int dismiss) {
         this.dismiss = dismiss;
     }
 
+    /**
+     * @return approve requests number
+     */
     @Basic
     @Column(name = "approve")
     public int getApprove() {
         return approve;
     }
 
+    /**
+     * Only for hibernate use
+     * @param approve value
+     */
     private void setApprove(int approve) {
         this.approve = approve;
     }
@@ -189,8 +253,8 @@ public class Movie implements Serializable{
     }
 
     /**
-     * Determines if given object is equal to this object. In comparison use all fields, with exception of publication
-     * date, meaning date of torrent file publication, which is not relevant information in movie context.
+     * Determines if given object is equal to this object. In comparison use title, imdbId and year filds, as rest could
+     * change and are not relevant for movie identification.
      * @param o  object to coparison.
      * @return  tru if both objects are equal
      */
@@ -203,22 +267,22 @@ public class Movie implements Serializable{
             Movie movie = (Movie)o;
             result = title.equals(movie.getTitle()) &&
                     year == movie.getYear() &&
-                    rating == movie.getRating() &&
-                    genre.equals(movie.getGenre()) &&
-                    torrentUrl.equals(movie.getTorrentUrl()) &&
-                    imdbId.equals(movie.getImdbId()) &&
-                    torrentName.equals(movie.getTorrentName());
+                    imdbId.equals(movie.getImdbId());
         }
 
         return result;
     }
 
     /**
-     * Basic hashCode implementation.
-     * @return
+     * Basic hashCode implementation, uses title, year and imdbId fields for generating hashcode.
+     * @return hashcode.
      */
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int result = getTitle().hashCode();
+        result = 31 * result + getYear();
+        result = 31 * result + getImdbId().hashCode();
+        return result;
     }
+
 }
