@@ -59,86 +59,70 @@
         <form>
             <div id="input-email-ractive"></div>
             <div id="input-rating-ractive"></div>
-
-            <!--<div class="form-group has-success has-feedback">-->
-                <!--<label for="emailInput">Email address</label>-->
-                <!--<input type="email" class="form-control" id="emailInput" placeholder="Email">-->
-                <!--<span class="glyphicon glyphicon-ok form-control-feedback"></span>-->
-                <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
-
+            <div id="input-radio-ractive"></div>
+            <!--<div class="form-group row">-->
+                <!--<h4>Whitelist of genres:</h4>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Action" value="Action">Action</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Animation" value="Animation">Animation</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Biography" value="Biography">Biography</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Family" value="Family">Family</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="History" value="History">History</label>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Music" value="Music">Music</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="War" value="War">War</label>-->
+                    <!--<label class="whitelist form-control"><input type="radio" name="Western" value="Western">Western</label>-->
+                <!--</div>-->
             <!--</div>-->
-            <!--<div class="form-group has-success has-feedback">-->
-                <!--<label for="ratingInput">Minimal accepted movie IMDB rating</label>-->
-                <!--<input type="number" class="form-control" id="ratingInput" step="0.1" min="0" max="10">-->
-                <!--<span class="glyphicon glyphicon-ok form-control-feedback"></span>-->
-                <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+
+            <!--<div class="form-group row">-->
+                <!--<h4>Blacklist of genres:</h4>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<div class="col-sm-3"><label class="blacklist form-control "><input type="radio" name="Action" value="Action">Action</label></div>-->
+                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label></div>-->
+                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Animation" value="Animation">Animation</label></div>-->
+                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Biography" value="Biography">Biography</label></div>-->
+                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label></div>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Family" value="Family">Family</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="History" value="History">History</label>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Music" value="Music">Music</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3">-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="War" value="War">War</label>-->
+                    <!--<label class="blacklist form-control"><input type="radio" name="Western" value="Western">Western</label>-->
+                <!--</div>-->
             <!--</div>-->
-
-            <div class="form-group row">
-                <h4>Whitelist of genres:</h4>
-                <div class="col-sm-3">
-                    <label class="whitelist form-control"><input type="radio" name="Action" value="Action">Action</label>
-                    <label class="whitelist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label>
-                    <label class="whitelist form-control"><input type="radio" name="Animation" value="Animation">Animation</label>
-                    <label class="whitelist form-control"><input type="radio" name="Biography" value="Biography">Biography</label>
-                    <label class="whitelist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label>
-                </div>
-                <div class="col-sm-3">
-                    <label class="whitelist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>
-                    <label class="whitelist form-control"><input type="radio" name="Family" value="Family">Family</label>
-                    <label class="whitelist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>
-                    <label class="whitelist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>
-                    <label class="whitelist form-control"><input type="radio" name="History" value="History">History</label>
-                </div>
-                <div class="col-sm-3">
-                    <label class="whitelist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>
-                    <label class="whitelist form-control"><input type="radio" name="Music" value="Music">Music</label>
-                    <label class="whitelist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>
-                    <label class="whitelist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>
-                    <label class="whitelist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>
-                </div>
-                <div class="col-sm-3">
-                    <label class="whitelist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>
-                    <label class="whitelist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>
-                    <label class="whitelist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>
-                    <label class="whitelist form-control"><input type="radio" name="War" value="War">War</label>
-                    <label class="whitelist form-control"><input type="radio" name="Western" value="Western">Western</label>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <h4>Blacklist of genres:</h4>
-                <div class="col-sm-3">
-                    <label class="blacklist form-control"><input type="radio" name="Action" value="Action">Action</label>
-                    <label class="blacklist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label>
-                    <label class="blacklist form-control"><input type="radio" name="Animation" value="Animation">Animation</label>
-                    <label class="blacklist form-control"><input type="radio" name="Biography" value="Biography">Biography</label>
-                    <label class="blacklist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label>
-                </div>
-                <div class="col-sm-3">
-                    <label class="blacklist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>
-                    <label class="blacklist form-control"><input type="radio" name="Family" value="Family">Family</label>
-                    <label class="blacklist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>
-                    <label class="blacklist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>
-                    <label class="blacklist form-control"><input type="radio" name="History" value="History">History</label>
-                </div>
-                <div class="col-sm-3">
-                    <label class="blacklist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>
-                    <label class="blacklist form-control"><input type="radio" name="Music" value="Music">Music</label>
-                    <label class="blacklist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>
-                    <label class="blacklist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>
-                    <label class="blacklist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>
-                </div>
-                <div class="col-sm-3">
-                    <label class="blacklist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>
-                    <label class="blacklist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>
-                    <label class="blacklist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>
-                    <label class="blacklist form-control"><input type="radio" name="War" value="War">War</label>
-                    <label class="blacklist form-control"><input type="radio" name="Western" value="Western">Western</label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-lg btn-default">Register</button>
 
         </form>
 
@@ -300,19 +284,16 @@
             </tr>
         </table>
         <h6>Take a look on the latest recommendations from our DB:</h6>
-        <div id="main"></div>
+        <div id="db-table-ractive"></div>
     </div>
+
+    <!-- INPUT ELEMENTS TEMPLATES -->
 
     <script id="input-email-template" type="text/ractive">
         <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
                 <label for="input-email-element">Email address</label>
                 <input type="email" class="form-control" id="input-email-element" placeholder="Email" on-input='@this.verify()'>
-
-                {{#if valid}}
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-                {{else}}
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                {{/if}}
+                {{>input-icon-partial}}
         </div>
     </script>
 
@@ -321,15 +302,22 @@
                 <label for="input-rating-element">Email address</label>
                 <input  type="number" class="form-control" id="input-rating-element" step="0.1" min="0" max="10" on-input='@this.verify()'>
 
-                {{#if valid}}
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-                {{else}}
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                {{/if}}
+                {{>input-icon-partial}}
         </div>
     </script>
 
-    <script id="dbTable" type="text/ractive">
+    <script id="input-icon-partial" type="text/html">
+        {{#if valid}}
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        {{else}}
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        {{/if}}
+    </script>
+
+    <!-- /INPUT -->
+    <!-- TABLE ELEMENT TEMPLATE -->
+
+    <script id="db-table-template" type="text/ractive">
     {{#if isLoaded}}
 
         <table class="table table-bordered table-striped table-hover table-responsive fadeIn" style="opacity: {{op}}">
@@ -365,17 +353,29 @@
             </tbody>
         </table>
         {{else}}
-        <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
-                <label for="emailInput">Email address</label>
-                <input type="email" class="form-control" id="emailInput2" placeholder="Email" on-input='@this.onInput()'>
-                {{#if valid}}
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-                {{else}}
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                {{/if}}
-        </div>
              <i class="fa fa-refresh rotating" aria-hidden="true"></i>
         {{/if}}
+    </script>
+
+    <!-- /TABLE -->
+    <!-- INPUT RADIO TEMPLATE -->
+    <script id="input-radio-template" type="text/ractive">
+        <div class="form-group row">
+
+            {{#each lists : i}}
+            <h4>{{lists[i]}} of genres:</h4>
+                {{#each genres : n}}
+                <div class="col-sm-3">
+                    <label class="form-control"><input type="radio" name="{{genres[n]}}" value="{{genres[n]}}">{{genres[n]}}</label>
+                </div>
+                {{/each}}
+            {{/each}}
+
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-default" on-click="@this.register()">Register</button>
+        <button type="reset" class="btn btn-lg btn-default" on-click="@this.clearRadio()">Clear</button>
+
     </script>
 
         <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
