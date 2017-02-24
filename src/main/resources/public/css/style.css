@@ -15,8 +15,8 @@
     transform: rotate(360deg); } }
 @keyframes fadingIn {
   from {
-    visibility: hidden; }
+    opacity: 0; }
   to {
-    visibility: visible; } }
+    opacity: 1; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -10,9 +10,11 @@ var daily_torrent = function() {
 		$('input:radio').each(function () {
 			$(this).prop('checked', false);
 		});
-		$('input:text').each(function () {
-			$(this).value = "";
-		})
+		inputEmail.inputEl.value = '';
+		inputEmail.verify();
+		inputRating.inputEl.value = '';
+		inputRating.verify();
+		inputRadio.verify();
 	}
 
 	function collectData() {
@@ -30,17 +32,17 @@ var daily_torrent = function() {
 			console.log($(this).className)
 		});
 
-		console.log({
+		return {
 			'id': id,
-			'rating': rating,
-			'whitelist': whitelist,
-			'blacklist': blacklist
-		});
+			'rating': rating.toFixed(1),
+			'whitelist': whitelist.join(", "),
+			'blacklist': blacklist.join(", ")
+		};
 	}
 
 	function registerUser() {
-		$.post('/api/profiles/',collectData(),function () {
-			alert('success');
+		$.post('/api/profile/',collectData(),function () {
+			clear();
 		})
 	}
 
@@ -83,8 +85,7 @@ var daily_torrent = function() {
             that: this,
             valid: false,
             movies: [],
-            isLoaded: false,
-            op: 0
+            isLoaded: false
         }
 
     });

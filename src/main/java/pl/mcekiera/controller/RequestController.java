@@ -45,7 +45,7 @@ public class RequestController {
      * @param blacklist movie genres disliked by profile user
      * @return String information about profile and HttoStatus OK
      */
-    @RequestMapping(value = "/api/profile/", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/profile", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity addProfile(@RequestParam(value="id", defaultValue="") String id,
                            @RequestParam(value="rating") double rating,

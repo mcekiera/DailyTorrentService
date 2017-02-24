@@ -59,7 +59,7 @@
 
     <div class="container">
         <h1>YourTorrent recommendation service registration form</h1>
-        <form>
+        <form method="post">
             <div id="input-email-ractive"><!-- TEMPLATE --></div>
             <div id="input-rating-ractive"><!-- TEMPLATE --></div>
             <div id="input-radio-ractive"><!-- TEMPLATE --></div>
@@ -265,7 +265,7 @@
     <script id="db-table-template" type="text/ractive">
     {{#if isLoaded}}
 
-        <table class="table table-bordered table-striped table-hover table-responsive fadeIn" style="opacity: {{op}}">
+        <table class="table table-bordered table-striped table-hover table-responsive fadeIn">
             <thead>
             <tr>
                 <th>Title</th>
@@ -322,8 +322,8 @@
 
     <script id="form-buttons-template" type="text/ractive">
 
-        <button type="submit" class="btn btn-lg btn-default" on-click="@this.register()" {{#unless enabled}}disabled{{/unless}}>Register</button>
-        <button type="reset" class="btn btn-lg btn-default" on-click="@this.clearRadio()">Clear</button>
+        <button type="button" class="btn btn-lg btn-default" on-click="@this.register()" {{#unless enabled}}disabled{{/unless}}>Register</button>
+        <button type="button" class="btn btn-lg btn-default" on-click="@this.clearRadio()">Clear</button>
 
     </script>
 
