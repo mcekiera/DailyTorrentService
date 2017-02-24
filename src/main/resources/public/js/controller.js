@@ -1,4 +1,3 @@
-Ractive.DEBUG = false;
 var daily_torrent = function() {
 
 	function submitCheck() {
@@ -29,7 +28,6 @@ var daily_torrent = function() {
 			} else if($(this).hasClass('blacklist')) {
 				blacklist.push($(this).val());
 			}
-			console.log($(this).className)
 		});
 
 		return {
@@ -39,7 +37,7 @@ var daily_torrent = function() {
 			'blacklist': blacklist.join(", ")
 		};
 	}
-
+	//TODO: check if in Java it also ends with //
 	function registerUser() {
 		$.post('/api/profile/',collectData(),function () {
 			clear();
@@ -102,7 +100,7 @@ var daily_torrent = function() {
 			submitCheck();
 		},
         data: {
-            lists: ["Whitelist","Blacklist"].sort(),
+            lists: ["Whitelist","Blacklist"],
             genres: ['Drama', 'Comedy', 'Action', 'Romance', 'Thriller',
                 'Animation', 'Family', 'Horror', 'Music', 'Adventure',
                 'Fantasy', 'Sci-Fi', 'Mystery', 'Biography', 'Sport',

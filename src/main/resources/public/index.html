@@ -6,7 +6,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"  rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"  rel="stylesheet" >
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -14,12 +14,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand logo" href="#">
-                    <span class="logo--minor">d</span>
-                    <span class="logo--major">t</span>
-
+                <a class="navbar-brand logo logo--small" href="#">
+                    <span class="logo__minor">d</span>
+                    <span class="logo__major">t</span>
                 </a>
-                <a class="navbar-brand" href="#">DailyTorrent</a>
+                <a class="navbar-brand logo__caption" href="#">DailyTorrent</a>
                 <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -41,14 +40,15 @@
         </div>
     </nav>
     <!-- JUMBOTRON -->
-    <div class="container-flex jumbotron--back">
+    <div class="container-flex jumbotron">
         <div class="container">
             <div class="jumbotron">
                 <h1> <i class="fa fa-film"></i>
-                    <span class="logo">
-                        dT
+                    <span class="logo logo--big">
+                        <span class="logo__minor">d</span>
+                        <span class="logo__major">t</span>
                     </span>
-                    DailyTorrent
+                    <span class=" logo__caption">dailyTorrent</span>
                 </h1>
                 <p>Get (y)our daily movie recommendations!</p>
             </div>
@@ -58,22 +58,27 @@
     </div>
 
     <div class="container">
-        <h1>YourTorrent recommendation service registration form</h1>
+        <h1>DailyTorrent registration form</h1>
+        <p>The email, rating and whitelist part is obligatory. Blacklist is optional.</p>
+        <p>Whitelist is a list of your favourite movie genres, if any of them match, movie will appear in our recommendations.
+        The opposite, blacklist, is a list of disliked genres. If it match, it will remove maovie from recommendations.</p>
         <form method="post">
+            <p>Email serves as your profile id</p>
             <div id="input-email-ractive"><!-- TEMPLATE --></div>
+            <p>Minimal rating determine the lowest IMDB rating for movies recommendations</p>
             <div id="input-rating-ractive"><!-- TEMPLATE --></div>
+            <p>Choose at least your favourite genres:</p>
             <div id="input-radio-ractive"><!-- TEMPLATE --></div>
             <div id="form-buttons-ractive"><!--TEMPLATE --></div>
         </form>
-        <button onclick="collectData()">"Collect</button>
     </div>
-
+    <hr>
     <!-- API DESCRIPTION -->
     <div class="container">
 
         <h1>API</h1>
 
-        <h4>GET recommendation for profile</h4>
+        <h4><span class="api__method">GET</span><span class="api__desc">retrieve recommendation for given profile</span></h4>
         <p>Endpoint:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/api/ </a></p>
         <table class="table table-bordered table-striped table-hover table-responsive">
             <thead>
@@ -92,9 +97,9 @@
             </tbody>
         </table>
 
-        <h4>POST dismiss or approve of recommendation</h4>
-        <p><a href="" target="_blank">Endpoint for dismiss: </a></p>
-        <p><a href="" target="_blank">Endpoint for approve: </a></p>
+        <h4><span class="api__method">POST</span><span class="api__desc">dismiss or approve request for recommendation</span></h4>
+        <p>Endpoint to dismiss:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/dis/ </a></p>
+        <p>Endpoint to approve:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/app/ </a></p>
         <table class="table table-bordered table-striped table-hover table-responsive">
             <tr>
                 <th>Parameter</th>
@@ -113,29 +118,8 @@
             </tr>
         </table>
 
-        <h4>POST dismiss or approve of recommendation</h4>
-        <p><a href="" target="_blank">Endpoint for dismiss: </a></p>
-        <p><a href="" target="_blank">Endpoint for approve: </a></p>
-        <table class="table table-bordered table-striped table-hover table-responsive">
-            <tr>
-                <th>Parameter</th>
-                <th>Description</th>
-                <th>Data type</th>
-            </tr>
-            <tr>
-                <td>pid</td>
-                <td>Id of profile in email form</td>
-                <td>String</td>
-            </tr>
-            <tr>
-                <td>mid</td>
-                <td>Movie id in form of IMDB id</td>
-                <td>String</td>
-            </tr>
-        </table>
-
-        <h4>POST add new profile</h4>
-        <p><a href="" target="_blank">Endpoint: </a></p>
+        <h4><span class="api__method">POST</span><span class="api__desc">add new profile</span></h4>
+        <p>Endpoint:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/profile/ </a></p>
         <table class="table table-bordered table-striped table-hover table-responsive">
             <tr>
                 <th>Parameter</th>
@@ -245,7 +229,7 @@
 
     <script id="input-rating-template" type="text/ractive">
         <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
-                <label for="input-rating-element">Email address</label>
+                <label for="input-rating-element">Minimal rating</label>
                 <input type="number" class="form-control" id="input-rating-element" placeholder="0.0" value="{{rating}}" step="0.1" min="0" max="10" on-input='@this.verify()'>
 
                 {{>input-icon-partial}}
@@ -298,7 +282,9 @@
             </tbody>
         </table>
         {{else}}
+        <div class="wait-screen">
              <i class="fa fa-refresh rotating" aria-hidden="true"></i>
+        </div>
         {{/if}}
     </script>
 

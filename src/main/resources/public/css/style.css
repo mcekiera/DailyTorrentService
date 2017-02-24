@@ -1,3 +1,36 @@
+body {
+  font-family: 'Montserrat', sans-serif; }
+
+.logo {
+  font-weight: 700; }
+  .logo__caption {
+    font-weight: 700; }
+  .logo--small .logo__major {
+    margin-left: -5px; }
+  .logo--big .logo__major {
+    margin-left: -18px; }
+  .logo__minor {
+    color: white;
+    padding: 0;
+    margin: 0; }
+  .logo__major {
+    color: darkgrey;
+    font-weight: bold;
+    text-transform: uppercase; }
+
+.api__method {
+  font-weight: 700; }
+.api__desc {
+  font-style: italic; }
+.api__desc:before {
+  content: ' - '; }
+
+.wait-screen {
+  height: 100vh;
+  text-align: center;
+  padding-top: 100px;
+  font-size: 100px; }
+
 .rotating {
   -webkit-animation: rotate 2s infinite;
   -o-animation: rotate 2s infinite;

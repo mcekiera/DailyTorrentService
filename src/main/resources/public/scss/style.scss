@@ -4,6 +4,58 @@
   animation:  $params;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+  font-weight: 700;
+
+  &__caption {
+	font-weight: 700;
+  }
+
+  &--small .logo__major {
+	margin-left: -5px;
+  }
+
+  &--big .logo__major {
+	margin-left: -18px;
+  }
+
+  &__minor {
+	color: white;
+	padding: 0;
+	margin: 0;
+  }
+
+  &__major {
+	color: darkgrey;
+	font-weight: bold;
+	text-transform: uppercase;
+  }
+}
+
+.api {
+  &__method {
+	font-weight: 700;
+  }
+  &__desc {
+	font-style: italic;
+  }
+
+  &__desc:before {
+	content: ' - ';
+  }
+}
+
+.wait-screen {
+  height: 100vh;
+  text-align: center;
+  padding-top: 100px;
+  font-size: 100px;
+}
+
 .rotating {
   @include animation(rotate 2s infinite);
 }
@@ -23,9 +75,9 @@
 
 @keyframes fadingIn {
   from {
-    visibility: hidden;
+    opacity: 0;
   }
   to {
-    visibility: visible;
+    opacity: 1;
   }
 }
