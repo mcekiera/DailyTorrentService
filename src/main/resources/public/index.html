@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+    <!-- NAVIGATION -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -39,6 +40,7 @@
 
         </div>
     </nav>
+    <!-- JUMBOTRON -->
     <div class="container-flex jumbotron--back">
         <div class="container">
             <div class="jumbotron">
@@ -54,79 +56,19 @@
             <p><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>Fetch you recommendations with our simple API!</p>
         </div>
     </div>
+
     <div class="container">
         <h1>YourTorrent recommendation service registration form</h1>
         <form>
-            <div id="input-email-ractive"></div>
-            <div id="input-rating-ractive"></div>
-            <div id="input-radio-ractive"></div>
-            <!--<div class="form-group row">-->
-                <!--<h4>Whitelist of genres:</h4>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Action" value="Action">Action</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Animation" value="Animation">Animation</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Biography" value="Biography">Biography</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Family" value="Family">Family</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="History" value="History">History</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Music" value="Music">Music</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="War" value="War">War</label>-->
-                    <!--<label class="whitelist form-control"><input type="radio" name="Western" value="Western">Western</label>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="form-group row">-->
-                <!--<h4>Blacklist of genres:</h4>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<div class="col-sm-3"><label class="blacklist form-control "><input type="radio" name="Action" value="Action">Action</label></div>-->
-                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Adventure" value="Adventure">Adventure</label></div>-->
-                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Animation" value="Animation">Animation</label></div>-->
-                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Biography" value="Biography">Biography</label></div>-->
-                    <!--<div class="col-sm-3"><label class="blacklist form-control"><input type="radio" name="Comedy" value="Comedy">Comedy</label></div>-->
-                <!--</div>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Drama" value="Drama">Drama</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Family" value="Family">Family</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Fantasy" value="Fantasy">Fantasy</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Film-Noir" value="Film-Noir">Film-Noir</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="History" value="History">History</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Horror" value="Horror">Horror</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Music" value="Music">Music</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Musical" value="Musical">Musical</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Mystery" value="Mystery">Mystery</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Romance" value="Romance">Romance</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-3">-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Sci-Fi" value="Sci-Fi">Sci-Fi</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Sport" value="Sport">Sport</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Thriller" value="Thriller">Thriller</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="War" value="War">War</label>-->
-                    <!--<label class="blacklist form-control"><input type="radio" name="Western" value="Western">Western</label>-->
-                <!--</div>-->
-            <!--</div>-->
-
+            <div id="input-email-ractive"><!-- TEMPLATE --></div>
+            <div id="input-rating-ractive"><!-- TEMPLATE --></div>
+            <div id="input-radio-ractive"><!-- TEMPLATE --></div>
+            <div id="form-buttons-ractive"><!--TEMPLATE --></div>
         </form>
-
+        <button onclick="collectData()">"Collect</button>
     </div>
+
+    <!-- API DESCRIPTION -->
     <div class="container">
 
         <h1>API</h1>
@@ -223,6 +165,8 @@
         </table>
 
     </div>
+
+    <!-- DATABASE DESCRIPTION -->
     <div class="container">
         <h1>Our database:</h1>
         <p>Our database contains following columns:</p>
@@ -287,12 +231,14 @@
         <div id="db-table-ractive"></div>
     </div>
 
-    <!-- INPUT ELEMENTS TEMPLATES -->
+    <!-- RACTIVE TEMPLATES -->
+
+    <!-- TEXT INPUT TEMPLATES -->
 
     <script id="input-email-template" type="text/ractive">
         <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
                 <label for="input-email-element">Email address</label>
-                <input type="email" class="form-control" id="input-email-element" placeholder="Email" on-input='@this.verify()'>
+                <input type="email" class="form-control" id="input-email-element" placeholder="Email" value="{{id}}" on-input='@this.verify()'>
                 {{>input-icon-partial}}
         </div>
     </script>
@@ -300,7 +246,7 @@
     <script id="input-rating-template" type="text/ractive">
         <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
                 <label for="input-rating-element">Email address</label>
-                <input  type="number" class="form-control" id="input-rating-element" step="0.1" min="0" max="10" on-input='@this.verify()'>
+                <input type="number" class="form-control" id="input-rating-element" placeholder="0.0" value="{{rating}}" step="0.1" min="0" max="10" on-input='@this.verify()'>
 
                 {{>input-icon-partial}}
         </div>
@@ -314,8 +260,7 @@
         {{/if}}
     </script>
 
-    <!-- /INPUT -->
-    <!-- TABLE ELEMENT TEMPLATE -->
+    <!-- TABLE TEMPLATE -->
 
     <script id="db-table-template" type="text/ractive">
     {{#if isLoaded}}
@@ -357,8 +302,8 @@
         {{/if}}
     </script>
 
-    <!-- /TABLE -->
     <!-- INPUT RADIO TEMPLATE -->
+
     <script id="input-radio-template" type="text/ractive">
         <div class="form-group row">
 
@@ -366,19 +311,25 @@
             <h4>{{lists[i]}} of genres:</h4>
                 {{#each genres : n}}
                 <div class="col-sm-3">
-                    <label class="form-control"><input type="radio" name="{{genres[n]}}" value="{{genres[n]}}">{{genres[n]}}</label>
+                    <label class="form-control">
+                    <input class="{{lists[i].toLowerCase()}}" type="radio" name="{{genres[n]}}" value="{{genres[n]}}" on-change='@this.verify()'>{{genres[n]}}</label>
                 </div>
                 {{/each}}
             {{/each}}
 
         </div>
+    </script>
 
-        <button type="submit" class="btn btn-lg btn-default" on-click="@this.register()">Register</button>
+    <script id="form-buttons-template" type="text/ractive">
+
+        <button type="submit" class="btn btn-lg btn-default" on-click="@this.register()" {{#unless enabled}}disabled{{/unless}}>Register</button>
         <button type="reset" class="btn btn-lg btn-default" on-click="@this.clearRadio()">Clear</button>
 
     </script>
 
-        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <!-- /TEMPLATES -->
+
+        <script src="https://code.jquery.com/jquery-3.1.1.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="http://cdn.ractivejs.org/latest/ractive.js" type="text/javascript"></script>
         <script src="js/controller.js" type="text/javascript"></script>
