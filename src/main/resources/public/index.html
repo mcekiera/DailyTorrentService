@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
     <!-- NAVIGATION -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav  id="section--home" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand logo logo--small" href="#">
@@ -29,10 +29,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">API</a></li>
-                    <li><a href="#">DB</a></li>
+                    <li class="active"><a href="#section--home">Home</a></li>
+                    <li><a href="#section--form">Register</a></li>
+                    <li><a href="#section--api">API</a></li>
+                    <li><a href="#section--db">DB</a></li>
                 </ul>
             </div>
 
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div id="section--form" class="container">
         <h1>DailyTorrent registration form</h1>
         <p>The email, rating and whitelist part is obligatory. Blacklist is optional.</p>
         <p>Whitelist is a list of your favourite movie genres, if any of them match, movie will appear in our recommendations.
@@ -74,11 +74,11 @@
     </div>
     <hr>
     <!-- API DESCRIPTION -->
-    <div class="container">
+    <div id="section--api" class="container">
 
         <h1>API</h1>
 
-        <h4><span class="api__method">GET</span><span class="api__desc">retrieve recommendation for given profile</span></h4>
+        <h4 class="api__item"><span class="api__method">GET</span><span class="api__desc">retrieve recommendation for given profile</span></h4>
         <p>Endpoint:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/api/ </a></p>
         <table class="table table-bordered table-striped table-hover table-responsive">
             <thead>
@@ -96,8 +96,10 @@
                 </tr>
             </tbody>
         </table>
+        <p>Example: <span class="api__example">daily-torrent-service.herokuapp.com/api/?id=test@ing.of</span></p>
+        <p>Request without parameters will generate the list of newest item in database.</p>
 
-        <h4><span class="api__method">POST</span><span class="api__desc">dismiss or approve request for recommendation</span></h4>
+        <h4 class="api__item"><span class="api__method">POST</span><span class="api__desc">dismiss or approve request for recommendation</span></h4>
         <p>Endpoint to dismiss:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/dis/ </a></p>
         <p>Endpoint to approve:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/app/ </a></p>
         <table class="table table-bordered table-striped table-hover table-responsive">
@@ -117,8 +119,9 @@
                 <td>String</td>
             </tr>
         </table>
+        <p>Example: <span class="api__example">$.post('/api/app/',{pid=test@ing.of&mid=tt4458206})</span></p>
 
-        <h4><span class="api__method">POST</span><span class="api__desc">add new profile</span></h4>
+        <h4 class="api__item"><span class="api__method">POST</span><span class="api__desc">add new profile</span></h4>
         <p>Endpoint:<a href="" target="_blank"> daily-torrent-service.herokuapp.com/profile/ </a></p>
         <table class="table table-bordered table-striped table-hover table-responsive">
             <tr>
@@ -147,11 +150,11 @@
                 <td>String</td>
             </tr>
         </table>
-
+        <p>Example: <span class="api__example">$.post('/api/profile/',{'id':'test@for.yu','rating':5.0,'whitelist':'Action','blacklist':'Romance'})</span></p>
     </div>
 
     <!-- DATABASE DESCRIPTION -->
-    <div class="container">
+    <div id="section--db" class="container">
         <h1>Our database:</h1>
         <p>Our database contains following columns:</p>
         <table class="table table-bordered table-striped table-hover table-responsive">
@@ -318,6 +321,6 @@
         <script src="https://code.jquery.com/jquery-3.1.1.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="http://cdn.ractivejs.org/latest/ractive.js" type="text/javascript"></script>
-        <script src="js/controller.js" type="text/javascript"></script>
+        <script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>

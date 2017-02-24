@@ -24,6 +24,10 @@ body {
   font-style: italic; }
 .api__desc:before {
   content: ' - '; }
+.api__item {
+  margin-top: 50px; }
+.api__example {
+  font-family: monospace; }
 
 .wait-screen {
   height: 100vh;

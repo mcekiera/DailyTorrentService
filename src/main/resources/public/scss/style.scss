@@ -47,6 +47,14 @@ body {
   &__desc:before {
 	content: ' - ';
   }
+
+  &__item {
+	margin-top: 50px;
+  }
+
+  &__example {
+	font-family: monospace;
+  }
 }
 
 .wait-screen {
