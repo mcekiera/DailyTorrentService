@@ -1,3 +1,31 @@
-body {
-  font-size: 45px;
+@mixin animation($params) {
+  -webkit-animation: $params;
+  -o-animation: $params;
+  animation:  $params;
+}
+
+.rotating {
+  @include animation(rotate 2s infinite);
+}
+
+.fadeIn {
+  @include animation(fadingIn 2s);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadingIn {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
 }

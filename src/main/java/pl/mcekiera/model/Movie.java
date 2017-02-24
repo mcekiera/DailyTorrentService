@@ -218,7 +218,7 @@ public class Movie implements Serializable{
      */
     @Basic
     @Column(name = "approve")
-    public int getApprove() {
+    public Integer getApprove() {
         return approve;
     }
 
@@ -226,7 +226,7 @@ public class Movie implements Serializable{
      * Only for hibernate use
      * @param approve value
      */
-    private void setApprove(int approve) {
+    private void setApprove(Integer approve) {
         this.approve = approve;
     }
 

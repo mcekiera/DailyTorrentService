@@ -1,4 +1,22 @@
-body {
-  font-size: 12px; }
+.rotating {
+  -webkit-animation: rotate 2s infinite;
+  -o-animation: rotate 2s infinite;
+  animation: rotate 2s infinite; }
+
+.fadeIn {
+  -webkit-animation: fadingIn 2s;
+  -o-animation: fadingIn 2s;
+  animation: fadingIn 2s; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+@keyframes fadingIn {
+  from {
+    visibility: hidden; }
+  to {
+    visibility: visible; } }
 
 /*# sourceMappingURL=style.css.map */

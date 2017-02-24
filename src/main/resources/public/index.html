@@ -16,6 +16,7 @@
                 <a class="navbar-brand logo" href="#">
                     <span class="logo--minor">d</span>
                     <span class="logo--major">t</span>
+
                 </a>
                 <a class="navbar-brand" href="#">DailyTorrent</a>
                 <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -41,10 +42,9 @@
     <div class="container-flex jumbotron--back">
         <div class="container">
             <div class="jumbotron">
-                <h1>
+                <h1> <i class="fa fa-film"></i>
                     <span class="logo">
-                        <span class="logo--minor">d</span>
-                        <span class="logo--major">t</span>
+                        dT
                     </span>
                     DailyTorrent
                 </h1>
@@ -57,19 +57,22 @@
     <div class="container">
         <h1>YourTorrent recommendation service registration form</h1>
         <form>
-            <div class="form-group has-success has-feedback">
-                <label for="emailInput">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Email">
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <div id="input-email-ractive"></div>
+            <div id="input-rating-ractive"></div>
 
-            </div>
-            <div class="form-group has-success has-feedback">
-                <label for="ratingInput">Minimal accepted movie IMDB rating</label>
-                <input type="number" class="form-control" id="ratingInput" step="0.1" min="0" max="10">
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-            </div>
+            <!--<div class="form-group has-success has-feedback">-->
+                <!--<label for="emailInput">Email address</label>-->
+                <!--<input type="email" class="form-control" id="emailInput" placeholder="Email">-->
+                <!--<span class="glyphicon glyphicon-ok form-control-feedback"></span>-->
+                <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+
+            <!--</div>-->
+            <!--<div class="form-group has-success has-feedback">-->
+                <!--<label for="ratingInput">Minimal accepted movie IMDB rating</label>-->
+                <!--<input type="number" class="form-control" id="ratingInput" step="0.1" min="0" max="10">-->
+                <!--<span class="glyphicon glyphicon-ok form-control-feedback"></span>-->
+                <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+            <!--</div>-->
 
             <div class="form-group row">
                 <h4>Whitelist of genres:</h4>
@@ -300,8 +303,36 @@
         <div id="main"></div>
     </div>
 
-    <script id="template" type="text/ractive">
-        <table class="table table-bordered table-striped table-hover table-responsive">
+    <script id="input-email-template" type="text/ractive">
+        <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
+                <label for="input-email-element">Email address</label>
+                <input type="email" class="form-control" id="input-email-element" placeholder="Email" on-input='@this.verify()'>
+
+                {{#if valid}}
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                {{else}}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {{/if}}
+        </div>
+    </script>
+
+    <script id="input-rating-template" type="text/ractive">
+        <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
+                <label for="input-rating-element">Email address</label>
+                <input  type="number" class="form-control" id="input-rating-element" step="0.1" min="0" max="10" on-input='@this.verify()'>
+
+                {{#if valid}}
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                {{else}}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {{/if}}
+        </div>
+    </script>
+
+    <script id="dbTable" type="text/ractive">
+    {{#if isLoaded}}
+
+        <table class="table table-bordered table-striped table-hover table-responsive fadeIn" style="opacity: {{op}}">
             <thead>
             <tr>
                 <th>Title</th>
@@ -320,7 +351,7 @@
                 <td>{{genre}}</td>
                 <td>
                     <a href="http://www.imdb.com/title/{{imdbId}}" target="_blank">
-                        <i class="fa fa-imdb" aria-hidden="true"></i>
+                        <i class="fa fa-film" aria-hidden="true"></i>
                     </a>
                 </td>
                 <td>
@@ -333,6 +364,18 @@
             {{/each}}
             </tbody>
         </table>
+        {{else}}
+        <div class="{{#if valid}} form-group has-success has-feedback {{else}} form-group has-error has-feedback {{/if}}">
+                <label for="emailInput">Email address</label>
+                <input type="email" class="form-control" id="emailInput2" placeholder="Email" on-input='@this.onInput()'>
+                {{#if valid}}
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                {{else}}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {{/if}}
+        </div>
+             <i class="fa fa-refresh rotating" aria-hidden="true"></i>
+        {{/if}}
     </script>
 
         <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
