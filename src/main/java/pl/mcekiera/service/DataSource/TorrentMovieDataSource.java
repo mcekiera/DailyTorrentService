@@ -9,17 +9,28 @@ import pl.mcekiera.service.XMLSource.XmlSource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Retrieves and parse data from YourBittoren and OMDB service, to create a list of newly added movies in torrent
+ * repository. Suitable only for this particular service, with hardcoded parameters.
+ */
 public class TorrentMovieDataSource implements DataSource<Movie> {
     private static Logger log = Logger.getLogger(TorrentMovieDataSource.class);
     private final String rssUrl = "https://yourbittorrent.com/movies/rss.xml";
     private final String jsonUrl = "http://www.omdbapi.com/";
 
-
+    /**
+     * @return list of created Movie objects with data retrieved from YourBittoren and OMDB
+     * @throws InvalidDataSourceException
+     */
     @Override
     public List<Movie> getData() throws InvalidDataSourceException {
         return combineSources();
     }
 
+    /**
+     * Uses given data sources to retrieving and combining data fro Movie object creation
+     * @return List of Movie objects
+     */
     private List<Movie> combineSources() {
         List<Movie> movies = new ArrayList<>();
         List<MovieBuilder> temp = new ArrayList<>();
@@ -35,7 +46,7 @@ public class TorrentMovieDataSource implements DataSource<Movie> {
             log.info("Invalid data source exception");
             log.debug(e.getMessage());
         }
-        log.info("RSS data collection succeeded");
+        log.info("RSS data collection finished");
         log.info("OMDB data processing form URL: " + jsonUrl);
 
         OmdbJsonDataSource jsonDataSource = new OmdbJsonDataSource(jsonUrl,temp);

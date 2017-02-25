@@ -6,10 +6,13 @@ import org.jsoup.nodes.Document;
 
 import java.io.File;
 
-public class LocalXmlSource {
+/**
+ * Implementation for parsing local XML files. For testing purposes.
+ */
+public class LocalXmlSource implements XmlSource {
     private static Logger log = Logger.getLogger(OnlineXmlSource.class);
 
-
+    @Override
     public Document getDocument(String source) {
         Document xmlDoc = null;
         File file = new File(source);

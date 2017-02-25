@@ -6,6 +6,9 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+/**
+ * Implementation for online XML sources parsing.
+ */
 public class OnlineXmlSource implements XmlSource{
     private static Logger log = Logger.getLogger(OnlineXmlSource.class);
 

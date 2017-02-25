@@ -13,12 +13,15 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Data source implementation. Retrieves pieces of data from OMDB service.
+ */
 class OmdbJsonDataSource implements DataSource<MovieBuilder> {
     private static Logger log = Logger.getLogger(OmdbJsonDataSource.class);
     private final String source;
     private List<MovieBuilder> data;
     private final Pattern pattern;
-    //TODO: class for refactoring: names, extracting title processing method
+
     OmdbJsonDataSource(String url, List<MovieBuilder> list) {
         log.info("Retrieving movie data from URL: " + url);
         this.source = url;
@@ -26,12 +29,15 @@ class OmdbJsonDataSource implements DataSource<MovieBuilder> {
         this.pattern = Pattern.compile("((?:.(?!(\\d{4})|HD|3D|LD|[\\[\\](){}]))*.).*(\\d{4})?.*");
     }
 
-
+    /**
+     * Process input and retrieved data, to combine it into complete MovieBuilders object.
+     * @return List of MovieBuilders
+     */
     @Override
     public List<MovieBuilder> getData() {
         List<MovieBuilder> result = null;
         try {
-            result = collectData();
+            result = combineData();
             if (result.size() == 0) {
                 throw new InvalidDataSourceException(source);
             }
@@ -41,7 +47,11 @@ class OmdbJsonDataSource implements DataSource<MovieBuilder> {
         return result;
     }
 
-    private List<MovieBuilder> collectData() {
+    /**
+     * Combines YourBittorent data, with data retrieved from OMDB service, to create complate MovieBuilder object.
+     * @return List of MovieBuilders
+     */
+    private List<MovieBuilder> combineData() {
         String title;
         String year;
         Matcher matcher;
@@ -55,7 +65,7 @@ class OmdbJsonDataSource implements DataSource<MovieBuilder> {
                 title = matcher.group(1).replaceAll("[\\s_.-]+", "+");
                 year = null == matcher.group(2) ? "" : "&y=" + matcher.group(2);
                 try {
-                    result.add(fetchData(builder, source + title + year));
+                    result.add(getOmdbData(builder, source + title + year));
                 } catch (InvalidDataSourceException ex) {
                     System.out.println(ex.getMessage());
                 }
@@ -64,7 +74,14 @@ class OmdbJsonDataSource implements DataSource<MovieBuilder> {
         return result;
     }
 
-    private MovieBuilder fetchData(MovieBuilder builder, String url) throws InvalidDataSourceException {
+    /**
+     * Get data by HTTPRequest form OMDB Service, about proper movie title, year of release, IMDB rating, etc.
+     * @param builder MovieBuilder with basic data from YouBittorent
+     * @param url proper url for GET request
+     * @return MovieBuilder object with complete movie data
+     * @throws InvalidDataSourceException
+     */
+    private MovieBuilder getOmdbData(MovieBuilder builder, String url) throws InvalidDataSourceException {
         try {
             log.debug("Fetching data from URL: " + url);
 

@@ -7,6 +7,9 @@ import pl.mcekiera.respository.DataAccessObject;
 
 import java.util.List;
 
+/**
+ * Concrete implementation of RecommendationService interface, using Hibernate to retrieve data from SQL relational database.
+ */
 public class TorrentRecommendationService implements RecommendationService<Movie>{
     private static Logger log = Logger.getLogger(TorrentRecommendationService.class);
 
@@ -23,6 +26,12 @@ public class TorrentRecommendationService implements RecommendationService<Movie
         return moviesDAO.query(query, 50);
     }
 
+    /**
+     * Generates HQL query for given database structure for retrieving Movie objects for recommendation service.
+     * In HGL query generation, it uses data from particular user Profile object.
+     * @param user Profile object of given user
+     * @return String with HQL query
+     */
     private String createQuery(Profile user) {
         String whitelist = createAlternativesChain(user.getWhitelist(), "LIKE");
         String blacklist = createAlternativesChain(user.getBlacklist(), "NOT LIKE");
@@ -32,6 +41,13 @@ public class TorrentRecommendationService implements RecommendationService<Movie
                 " ORDER BY m.publicationDate desc, rating desc";
     }
 
+    /**
+     * Creates specific part of HQl query, containing alternative chain (like '... OR ... OR ...'), from provided list
+     * in String form
+     * @param listAsString list of items delimited by ','
+     * @param connector SQL keyword for specific chained function (ex. 'LIKE,'NOT LIKE')
+     * @return String with chained alternatives
+     */
     private String createAlternativesChain(String listAsString, String connector) {
         String result = "";
         if(!listAsString.equals("")) {
