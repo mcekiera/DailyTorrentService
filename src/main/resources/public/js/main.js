@@ -128,7 +128,6 @@ var daily_torrent = function() {
     inputEmail.inputEl = inputEmail.find("#input-email-element");
 
     (function () {
-
         $.getJSON("/api/", function (data) {
             dbTable.set('movies', data);
 			dbTable.set("isLoaded", true);
