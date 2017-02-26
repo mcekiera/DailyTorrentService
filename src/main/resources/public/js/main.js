@@ -83,7 +83,10 @@ var daily_torrent = function() {
             that: this,
             valid: false,
             movies: [],
-            isLoaded: false
+            isLoaded: false,
+            formatToQuery: function (title) {
+                return title.replace(/\s+/g, '+');
+            }
         }
 
     });
