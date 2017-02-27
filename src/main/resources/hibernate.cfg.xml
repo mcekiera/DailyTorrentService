@@ -7,9 +7,9 @@
     <!--TODO: hide DB credentials-->
     <property name="connection.url">jdbc:mysql://eu-cdbr-west-01.cleardb.com/heroku_3d3dc314cddcc57</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.username">****</property>
-    <property name="connection.password">****</property>
-    <property name="default_schema">****</property>
+    <property name="connection.username">b64584c3fe3e14</property>
+    <property name="connection.password">0bdec71b</property>
+    <property name="default_schema">heroku_3d3dc314cddcc57</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <property name="show_sql">true</property>
 
