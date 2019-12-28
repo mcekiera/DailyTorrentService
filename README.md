@@ -6,4 +6,3 @@ newest positions in YourBittorent offer.
 
 <b>Java, Maven, Spring Boot, Hibernate, HTML, CSS, SCSS, JavaScript, Ractive JS, jQuery, Bootstrap</b>
 
-<a href="https://daily-torrent-service.herokuapp.com/">Live version</a>
